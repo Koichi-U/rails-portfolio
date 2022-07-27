@@ -1,0 +1,26 @@
+<div class="body-article-list">
+  This is comment list.
+
+  <div class="article-table">
+    <table>
+      <tr>
+        <th class="article-table-id">id</th>
+        <th class="article-table-username">content</th>
+        <th class="article-table-email">user_id</th>
+        <th class="article-table-admin">article_id</th>
+        <th class="article-table-create">created_at</th>
+        <th class="article-table-update">updated_at</th>
+      </tr>
+      <% @articles.each do |a| %>
+        <tr>
+          <td><%= a.id %></td>
+          <td><%= a.title %></td>
+          <td><%= a.text %></td>
+          <td><%= a.created_at %></td>
+          <td><%= a.updated_at %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+

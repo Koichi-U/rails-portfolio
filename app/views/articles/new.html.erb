@@ -1,0 +1,15 @@
+This is new.
+
+<%= form_for @article do |f| %>
+  <div class="fields">
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title, :size => 140 %>
+    </div>
+    <div class="field">
+      <%= f.label :text %>
+      <%= f.text_field :text, :size => 140 %>
+    </div>
+  </div>
+  <%= f.submit "Tweetする" %>
+<% end %>
