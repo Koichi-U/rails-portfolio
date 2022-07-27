@@ -13,3 +13,74 @@
  *= require_tree .
  *= require_self
  */
+
+/* turquoise */
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+a:link,
+a:visited {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+body {
+  background-color: turquoise;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-star {
+  cursor: url("pencile-white-32.png"), pointer;
+}
+
+header {
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  background-image: url("star.jpg");
+}
+
+.header-logo {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo a {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.header-content {
+  width: 70%;
+}
+
+.header-content ul {
+  margin-right: 10px;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-content ul li {
+  margin: auto 10px;
+  width: 100px;
+  font-size: 30px;
+  list-style: none;
+  text-align: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  transition: all 0.75s;
+}
+
+.header-content ul li:hover {
+  border-bottom: 2px solid turquoise;
+}

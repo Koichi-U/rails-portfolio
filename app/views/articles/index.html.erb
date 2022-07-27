@@ -1,0 +1,15 @@
+<div class="body-article-index">
+  This is index.
+
+  <div class="articles">
+    <% @articles.each do |a| %>
+      <div class="article">
+        <%= a.id %>
+        <a href="<%= article_path(a.id) %>"><%= a.title %></a>
+        <%= a.text %>
+      </div>
+    <% end %>
+  </div>
+
+  <a href="<%= new_article_path %>">New</a>
+</div>

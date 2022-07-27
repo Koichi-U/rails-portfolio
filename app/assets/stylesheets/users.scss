@@ -1,0 +1,42 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+table {
+  border-collapse: collapse;
+}
+
+.user-table {
+  margin-top: 30px;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.user-table table th,
+.user-table table td {
+  border-top: solid 1px rgb(203, 203, 203);
+  border-bottom: solid 1px rgb(203, 203, 203);
+}
+
+.user-table table th {
+  background-color: rgb(225, 225, 225);
+}
+
+.user-table table td {
+  background-color: rgb(255, 255, 255);
+}
+
+.user-table-row-small {
+  padding: 1em 2em;
+}
+
+.user-table-email {
+  padding: 1em 8em;
+}
+
+.user-table-create,
+.user-table-update {
+  padding: 1em 6em;
+}
