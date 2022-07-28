@@ -1,28 +1,30 @@
 This is show.
 <%= @article.id %>
 
-<div class="">
-  <p><%= @article.title %></p>
-  <p><%= @article.text %></p>
-  <div class="comment-wrapper">
-    <p>コメント一覧</p>
-    <% @comments.each do |c| %>
-      <div>
-        <%= c.user.email unless c.user.blank? %>
-        <br>
-        <%= c.content %>
-      </div>
-        <br>
-    <% end %>
+<div class="article-container-show">
+  <div class="article-show">
+    <p><%= @article.title %></p>
+    <p><%= @article.text %></p>
+  </div>
+  <% if user_signed_in? && @article.user_id == current_user.id %>
+    <div class="comment-container">
+      <p>コメント一覧</p>
+      <% @comments.each do |c| %>
+        <div>
+          <%= c.content %>
+        </div>
+          <br>
+      <% end %>
 
 
-    <% if user_signed_in? %>
-      <%= form_with(model: [@article, @comment], local: true) do |f| %>
-        <%= f.text_area :content %>
-        <%= button_tag type: "submit" do %>
-          <i class="far fa-comments"></i> コメントする
+      <% if user_signed_in? %>
+        <%= form_with(model: [@article, @comment], local: true) do |f| %>
+          <%= f.text_area :content %>
+          <%= button_tag type: "submit" do %>
+            <i class="far fa-comments"></i> コメントする
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

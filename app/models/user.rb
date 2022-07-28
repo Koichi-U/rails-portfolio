@@ -7,4 +7,5 @@ class User < ApplicationRecord
          validates :username, presence: true
          has_many :comments, dependent: :destroy
          has_many :articles
+         mount_uploader :userimage, ImageUploader
 end
