@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :if_not_admin, only: [:admin, :user_list]
   def show
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
+    @comments = Comment.where(user_id: params[:id])
   end
 
   def admin

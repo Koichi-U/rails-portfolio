@@ -1,1 +1,13 @@
 This is show.
+
+<p><%= @user.username %></p>
+<p><%= @user.email %></p>
+<p><%= image_tag @user.userimage_url, size: "250x200" if @user.userimage? %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<% @comments.each do |c| %>
+  <p><%= c.content %></p>
+<% end %>
