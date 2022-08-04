@@ -7,6 +7,11 @@
         <%= a.id %>
         <a href="<%= article_path(a.id) %>"><%= a.title %></a>
         <%= a.text %>
+        <%= a.site_url %>
+        -------------------
+        <%= Url.find_by(id: a.id).title %>
+        <%= Url.find_by(id: a.id).description %>
+        <img src="<%= Url.find_by(id: a.id).image %>" alt="" width="" height="" border="0">
       </div>
     <% end %>
   </div>

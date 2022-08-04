@@ -10,6 +10,10 @@ This is new.
       <%= f.label :text %>
       <%= f.text_field :text, :size => 140 %>
     </div>
+    <div class="field">
+      <%= f.label :site_url %>
+      <%= f.text_field :site_url, :size => 140 %>
+    </div>
   </div>
   <%= f.submit "記事を投稿する" %>
 <% end %>
@@ -17,9 +21,9 @@ This is new.
 
 
 
-
+------------------------------------------------------------------------
 <% #練習 %>
-
+<% if false %>
 <%= form_for @tagging do |f| %>
   <% @tags.each do |t| %>
     <div class="field-checkbox">
@@ -39,4 +43,5 @@ This is new.
     </div>
   </div>
   <%= f.submit "タグを追加する" %>
+<% end %>
 <% end %>
