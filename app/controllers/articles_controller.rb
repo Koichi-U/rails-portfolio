@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @tags = Tag.all
+    @tag = Tag.new
+    @tagging = Tagging.new
   end
 
   def create

@@ -11,5 +11,32 @@ This is new.
       <%= f.text_field :text, :size => 140 %>
     </div>
   </div>
-  <%= f.submit "Tweetする" %>
+  <%= f.submit "記事を投稿する" %>
+<% end %>
+
+
+
+
+
+<% #練習 %>
+
+<%= form_for @tagging do |f| %>
+  <% @tags.each do |t| %>
+    <div class="field-checkbox">
+      <% #check_boxはデフォでinputが2つ生成される→trueの時とfalseの時用（https://prograshi.com/framework/rails/check_box/） %>
+      <% #multiple: trueで複数保存、配列保存を可能にしている %>
+      <%= f.check_box "tag_id", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
+      <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
+    </div>
+  <% end %>
+  <%= f.submit "記事を投稿する" %>
+<% end %>
+<%= form_for @tag do |f| %>
+  <div class="fields">
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, :size => 140 %>
+    </div>
+  </div>
+  <%= f.submit "タグを追加する" %>
 <% end %>
