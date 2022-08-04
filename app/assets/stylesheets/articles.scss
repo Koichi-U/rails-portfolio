@@ -5,3 +5,28 @@
 .article {
   font-size: 40px;
 }
+
+.field-checkbox {
+  display: inline-block;
+}
+
+.field-checkbox input {
+  display: none;
+}
+
+.field-checkbox label {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: #eee;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.field-checkbox input:hover + label {
+  background: rgba(251, 2, 2, 0.5);
+}
+
+.field-checkbox input:checked + label {
+  background: rgb(251, 2, 2);
+}

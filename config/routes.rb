@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments, only: [:create]
+    resources :taggings, only: [:create]
   end
+  resources :tags, only: [:create]
+  resources :taggings, only: [:create]
   root 'articles#index'
 end
