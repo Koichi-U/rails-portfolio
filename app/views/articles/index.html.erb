@@ -4,14 +4,12 @@
   <div class="articles">
     <% @articles.each do |a| %>
       <div class="article">
-        <%= a.id %>
-        <a href="<%= article_path(a.id) %>"><%= a.title %></a>
-        <%= a.text %>
-        <%= a.site_url %>
-        -------------------
-        <%= Url.find_by(id: a.id).title %>
-        <%= Url.find_by(id: a.id).description %>
-        <img src="<%= Url.find_by(id: a.id).image %>" alt="" width="" height="" border="0">
+        <a href="<%= article_path(a.id) %>" class="article-img"><img src="<%= Url.find_by(id: a.id).image %>" alt=""></a>
+        <div class="article-text">
+          <a href="<%= article_path(a.id) %>" class="article-text-title"><%= Url.find_by(id: a.id).title %></a>
+          <a href="" class="article-text-tag">Tag</a>
+          <a href="" class="article-text-description"><%= Url.find_by(id: a.id).description %></a>
+        </div>
       </div>
     <% end %>
   </div>
