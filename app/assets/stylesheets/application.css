@@ -16,16 +16,6 @@
 
 /* turquoise */
 
-@import url("https://rsms.me/inter/inter.css");
-html {
-  font-family: "Inter", sans-serif;
-}
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: "Inter var", sans-serif;
-  }
-}
-
 * {
   margin: 0px;
   padding: 0px;
@@ -69,11 +59,11 @@ header {
   align-items: center;
 }
 
-.header-content {
+.header-contents {
   width: 70%;
 }
 
-.header-content ul {
+.header-contents > ul {
   margin-right: 100px;
   height: 100%;
   display: flex;
@@ -81,42 +71,105 @@ header {
   align-items: center;
 }
 
-.header-content ul li {
+.header-contents > ul > li {
   margin-left: 20px;
-  width: 100px;
+}
+
+.header-contents > ul > li > * {
+  height: 45px;
+}
+
+.header-contents ul li {
   font-size: 30px;
   list-style: none;
   text-align: center;
-  border-bottom: 2px solid rgba(255, 255, 255, 0);
-  transition: all 0.75s;
+  /* border-bottom: 2px solid rgba(255, 255, 255, 0);
+  transition: all 0.75s; */
 }
 
-.header-content ul li:hover {
-  border-bottom: 2px solid turquoise;
+.header-contents ul li:hover {
+  /* border-bottom: 2px solid turquoise; */
 }
 
-.header-content ul li .header-white-box {
-  height: 45px;
+.header-white-box {
   width: 100px;
   background-color: #ffffff;
   border: 1px solid #0a0a0a;
 }
 
-.header-content ul li .header-white-box a {
+.header-white-box a {
   color: #0a0a0a;
   font-size: 16px;
   font-weight: bold;
 }
 
-.header-content ul li .header-black-box {
-  height: 45px;
+.header-black-box {
   width: 100px;
   background-color: #0a0a0a;
   border: 1px solid #0a0a0a;
 }
 
-.header-content ul li .header-black-box a {
+.header-black-box a {
   color: #ffffff;
   font-size: 16px;
   font-weight: bold;
+}
+
+.header-list {
+  padding: 0px 5px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-bottom {
+  width: 13px;
+  height: 13px;
+  margin: 5px 13px 13px 5px;
+  border-bottom: solid 2px #0a0a0a;
+  border-right: solid 2px #0a0a0a;
+  display: inline-block;
+  transform: rotate(45deg);
+}
+
+.arrow-bottom-left {
+  margin-right: 6px;
+}
+
+.header-dropdown-category-hover, .header-dropdown-category > ul > li > a {
+  width: 140px;
+  height: 100%;
+}
+
+/* プルダウン-Start */
+.header-dropdown-category-hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.header-dropdown-category ul {
+  position: absolute;
+  top: 75px;/* ヘッダーのheight */
+}
+
+.header-dropdown-category ul li {
+  height: 0;
+  overflow: hidden;
+  transition: .5s;
+}
+
+.header-dropdown-category ul li a {
+  background-color: #585858;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-dropdown-category:hover > ul > li {
+  height: 3rem;
+  overflow: hidden;
 }
