@@ -2,16 +2,98 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+//Admin共通仕様
+.admin-body {
+  display: flex;
+  justify-content: flex-start;
+}
+//end
+
+//Adminのheader部分
+.admin-header {
+  width: 250px;
+  height: calc(100vh - 75px);
+  color: #F5F5F5;
+  background-color: #0a0a0a;
+}
+
+.admin-header *:link,
+.admin-header *:visited {
+  color: #F5F5F5;
+}
+
+.admin-header a:hover, .admin-header a:active {
+  color: #838383;
+}
+
+.admin-user > a {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.admin-user img {
+  margin: 15px;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.admin-lists {
+  font-size: 15px;
+}
+
+.admin-list {
+  margin-top: 10px;
+}
+
+.admin-list-large {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.admin-list-small {
+  margin-left: 15px;
+  font-size: 15px;
+}
+//end
+
+
+
+
+
+
+
+
+
 table {
+  width: 1067px;
   border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.admin-body-user {
+  width: calc(100vw - 250px);
+}
+
+.td {
+  margin: 0px 5px;
+  padding: 5px 0px;
+  height: 21px;
+  overflow: scroll;
+  white-space: nowrap;
 }
 
 .user-table {
   margin-top: 30px;
   font-size: 18px;
-  text-align: center;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .user-table table th,
@@ -28,15 +110,27 @@ table {
   background-color: rgb(255, 255, 255);
 }
 
-.user-table-row-small {
-  padding: 1em 2em;
+.user-table-id {
+  padding: 1em 1.5em;
+  width: 1em;
+}
+
+.user-table-username {
+  padding: 1em 1.5em;
+  width: 5em;
 }
 
 .user-table-email {
   padding: 1em 8em;
+  width: 3em;
 }
 
-.user-table-create,
-.user-table-update {
-  padding: 1em 6em;
+.user-table-admin {
+  padding: 1em .5em;
+  width: 3em;
 }
+
+// .user-table-create,
+// .user-table-update {
+//   padding: 1em 4em;
+// }

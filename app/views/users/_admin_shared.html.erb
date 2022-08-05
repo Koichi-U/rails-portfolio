@@ -1,0 +1,38 @@
+<%#部分テンプレートのファイル %>
+<div class="admin-header">
+  <div class="admin-user">
+    <a href="<%= user_path(current_user.id) %>">
+      <img src="/assets/Admin.png" alt="">
+      <%= current_user.username %>
+    </a>
+  </div>
+  <div class="admin-lists">
+    <div class="admin-list-large admin-list">
+      <p>DB</p>
+      <div class="admin-list-small admin-list admin-list-db-user">
+        <a <% if current_page?(userlist_path) %>style="color: #838383;"<% else %>href="<%= userlist_path %>"<% end %>><p>User</p></a>
+      </div>
+      <div class="admin-list-small admin-list">
+        <a <% if current_page?(articlelist_path) %>style="color: #838383;"<% else %>href="<%= articlelist_path %>"<% end %>><p>Article</p></a>
+      </div>
+      <div class="admin-list-small admin-list">
+        <a <% if current_page?(commentlist_path) %>style="color: #838383;"<% else %>href="<%= commentlist_path %>"<% end %>><p>Comment</p></a>
+      </div>
+      <div class="admin-list-small admin-list">
+        <a <% if current_page?(commentlist_path) %>style="color: #838383;"<% else %>href="<%= commentlist_path %>"<% end %>><p>Url</p></a>
+      </div>
+      <div class="admin-list-small admin-list">
+        <a <% if current_page?(commentlist_path) %>style="color: #838383;"<% else %>href="<%= commentlist_path %>"<% end %>><p>Tag</p></a>
+      </div>
+    </div>
+    <div class="admin-list-large  admin-list">
+      <p>Admin</p>
+      <div class="admin-list-small admin-list">
+        <a <% if current_page?(userlist_path) %>style="color: #838383;"<% else %>href="<%= userlist_path %>"<% end %>><p>User List</p></a>
+      </div>
+      <div class="admin-list-small admin-list">
+        <a <% if current_page?(userlist_path) %>style="color: #838383;"<% else %>href="<%= userlist_path %>"<% end %>><p>User Invite</p></a>
+      </div>
+    </div>
+  </div>
+</div>

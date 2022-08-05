@@ -1,27 +1,27 @@
-<div class="body-user-list">
-  This is user list.
-
-  <div class="user-table">
-    <table>
-      <tr>
-        <th class="user-table-id">id</th>
-        <th class="user-table-username">username</th>
-        <th class="user-table-email">email</th>
-        <th class="user-table-admin">admin</th>
-        <th class="user-table-create">created_at</th>
-        <th class="user-table-update">updated_at</th>
-      </tr>
-      <% @users.each do |u| %>
+<div class="admin-body">
+  <%= render 'admin_shared' %><%#←ここは部分テンプレートを用いている %>
+  <div class="admin-body-user">
+    <div class="user-table">
+      <table>
         <tr>
-          <td><%= u.id %></td>
-          <td><%= u.username %></td>
-          <td><%= u.email %></td>
-          <td><%= u.admin %></td>
-          <td><%= u.created_at %></td>
-          <td><%= u.updated_at %></td>
+          <th class="user-table-id">id</th>
+          <th class="user-table-username">username</th>
+          <th class="user-table-email">email</th>
+          <th class="user-table-admin">admin</th>
+          <th class="user-table-create">created_at</th>
+          <th class="user-table-update">updated_at</th>
         </tr>
-      <% end %>
-    </table>
+        <% @users.each do |u| %>
+          <tr>
+            <td><div class="td"><%= u.id %></div></td>
+            <td><div class="td"><%= u.username %></div></td>
+            <td><div class="td"><%= u.email %></div></td>
+            <td><div class="td"><%= u.admin %></div></td>
+            <td><div class="td"><%= u.created_at %></div></td>
+            <td><div class="td"><%= u.updated_at %></div></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
-

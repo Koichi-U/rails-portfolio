@@ -53,7 +53,7 @@ header {
   align-items: center;
 }
 
-.header-logo a {
+.header-logo > a {
   margin-left: 30px;
   display: flex;
   align-items: center;
@@ -79,7 +79,7 @@ header {
   height: 45px;
 }
 
-.header-contents ul li {
+.header-contents > ul li {
   font-size: 30px;
   list-style: none;
   text-align: center;
@@ -97,7 +97,7 @@ header {
   border: 1px solid #0a0a0a;
 }
 
-.header-white-box a {
+.header-white-box > a {
   color: #0a0a0a;
   font-size: 16px;
   font-weight: bold;
@@ -109,7 +109,7 @@ header {
   border: 1px solid #0a0a0a;
 }
 
-.header-black-box a {
+.header-black-box > a {
   color: #ffffff;
   font-size: 16px;
   font-weight: bold;
@@ -151,18 +151,18 @@ header {
   position: relative;
 }
 
-.header-dropdown-category ul {
+.header-dropdown-category > ul {
   position: absolute;
   top: 75px;/* ヘッダーのheight */
 }
 
-.header-dropdown-category ul li {
+.header-dropdown-category > ul > li {
   height: 0;
   overflow: hidden;
   transition: .5s;
 }
 
-.header-dropdown-category ul li a {
+.header-dropdown-category > ul > li > a {
   background-color: #585858;
   display: flex;
   align-items: center;
