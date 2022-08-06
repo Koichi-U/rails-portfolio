@@ -71,7 +71,11 @@ header {
   align-items: center;
 }
 
-.header-contents > ul > li {
+.header-contents > ul > li:not(:nth-last-child(1), :nth-last-child(2)) {
+  padding: 0px 25px;
+}
+
+.header-contents > ul > li:nth-last-child(1) {
   margin-left: 20px;
 }
 
@@ -87,8 +91,14 @@ header {
   transition: all 0.75s; */
 }
 
-.header-contents ul li:hover {
-  /* border-bottom: 2px solid turquoise; */
+.header-contents > ul > li:hover:not(:nth-last-child(1), :nth-last-child(2)) a {
+  margin-bottom: -1px;
+  border-bottom: 1px solid #585858;
+  transition: 0.2s;
+}
+
+.header-contents > ul > li:not(:nth-last-child(1), :nth-last-child(2), :nth-last-child(3)) {
+  border-right: 1px solid #585858;
 }
 
 .header-white-box {
