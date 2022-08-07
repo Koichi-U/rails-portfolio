@@ -6,8 +6,27 @@ This is show.
 
 <% if current_user.id == @user.id %>
   <%= link_to "編集する", edit_user_registration_path %>
+  <h2>コメントした記事一覧</h2>
+  <div class="user-articles">
+    <% @user_articles.each do |ua| %>
+      <div class="article">
+        <a href="<%= article_path(ua.id) %>" class="article-img"><img src="<%= Url.find_by(id: ua.id).image %>" alt=""></a>
+        <div class="article-text">
+          <a href="<%= article_path(ua.id) %>" class="article-text-title"><%= Url.find_by(id: ua.id).title %></a>
+          <a href="" class="article-text-tag">Tag</a>
+          <a href="" class="article-text-description"><%= Url.find_by(id: ua.id).description %></a>
+        </div>
+      </div>
+      <div class="article-comment">
+        <p><%= ua.comments.count %></p>
+        <% @comments.where(article_id: ua.id).each do |c| %>
+          <div>
+            <%= c.content %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
-<% @comments.each do |c| %>
-  <p><%= c.content %></p>
-<% end %>
+
