@@ -6,25 +6,20 @@ This is show.
     <p><%= @article.title %></p>
     <p><%= @article.text %></p>
   </div>
-  <% if user_signed_in? && @article.user_id == current_user.id %>
-    <div class="comment-container">
+  <div class="comment-container">
+    <% if user_signed_in? %>
       <p>コメント一覧</p>
       <% @comments.each do |c| %>
         <div>
           <%= c.content %>
         </div>
-          <br>
       <% end %>
-
-
-      <% if user_signed_in? %>
-        <%= form_with(model: [@article, @comment], local: true) do |f| %>
-          <%= f.text_area :content %>
-          <%= button_tag type: "submit" do %>
-            <i class="far fa-comments"></i> コメントする
-          <% end %>
+      <%= form_with(model: [@article, @comment], local: true) do |f| %>
+        <%= f.text_area :content %>
+        <%= button_tag type: "submit" do %>
+          <i class="far fa-comments"></i> コメントする
         <% end %>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

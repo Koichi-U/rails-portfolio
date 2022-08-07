@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @articles = Article.all
     @Urls = Url.all
@@ -41,8 +43,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comments = @article.comments
+    @comments = @article.comments.where(user_id: current_user.id)
     @comment = Comment.new
+  end
+
+  def edit
   end
 
   def delete
