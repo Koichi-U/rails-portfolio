@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
     @tags = Tag.all
     @tag = Tag.new
     @tagging = Tagging.new
+    gon.inputValue = 'aaa'
   end
 
   def create

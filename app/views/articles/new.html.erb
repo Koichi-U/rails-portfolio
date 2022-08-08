@@ -12,14 +12,19 @@ This is new.
     </div>
     <div class="field">
       <%= f.label :site_url %>
-      <%= f.text_field :site_url, :size => 140 %>
+      <%= f.text_field :site_url, :size => 140, id: 'inputSiteUrl' %>
     </div>
   </div>
   <%= f.submit "記事を投稿する" %>
 <% end %>
-
-
-
+<div class="article">
+  <a class="article-img" id="article-img-new"><img src="" alt=""></a>
+  <div class="article-text" id="article-text-new">
+    <a class="article-text-title" id="article-text-title-new"></a>
+    <a class="article-text-tag" id="article-text-tag-new">Tag</a>
+    <a class="article-text-description" id="article-text-description-new"></a>
+  </div>
+</div>
 
 ------------------------------------------------------------------------
 <% #練習 %>
@@ -45,3 +50,15 @@ This is new.
   <%= f.submit "タグを追加する" %>
 <% end %>
 <% end %>
+
+------------------------------------------------------------------------
+
+<script>
+$(document).ready(function() {
+    $(document).on('input', '#inputSiteUrl', function(e) {
+        gon.inputValue = $('#inputSiteUrl').val()
+        console.log(<%= "#{gon.inputValue}" %>);
+
+    });
+});
+</script>
