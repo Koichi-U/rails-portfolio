@@ -2,41 +2,101 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-table {
-  border-collapse: collapse;
+//Admin共通仕様
+.admin-body {
+  display: flex;
+  justify-content: flex-start;
+}
+//end
+
+//Adminのheader部分
+.admin-header {
+  width: 250px;
+  height: calc(100vh - 75px);
+  color: #F5F5F5;
+  background-color: #0a0a0a;
 }
 
-.user-table {
+.admin-header *:link,
+.admin-header *:visited {
+  color: #F5F5F5;
+}
+
+.admin-header a:hover, .admin-header a:active {
+  color: #838383;
+}
+
+.admin-user > a {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.admin-user img {
+  margin: 15px;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.admin-lists {
+  font-size: 15px;
+}
+
+.admin-list {
+  margin-top: 10px;
+}
+
+.admin-list-large {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.admin-list-small {
+  margin-left: 15px;
+  font-size: 15px;
+}
+//end
+
+//admin-body共通仕様
+.admin-body-common {
+  width: calc(100vw - 250px);
+}
+
+.admin-table-common {
   margin-top: 30px;
   font-size: 18px;
-  text-align: center;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
-.user-table table th,
-.user-table table td {
+.admin-table-common table {
+  width: 1067px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.admin-table-common th,
+.admin-table-common td {
   border-top: solid 1px rgb(203, 203, 203);
   border-bottom: solid 1px rgb(203, 203, 203);
 }
 
-.user-table table th {
+.admin-table-common th {
+  padding: 1em 0;
   background-color: rgb(225, 225, 225);
 }
 
-.user-table table td {
+.admin-table-common td {
+  margin: 0px 5px;
+  padding: 5px 0px;
+  height: 21px;
+  overflow: scroll;
+  white-space: nowrap;
   background-color: rgb(255, 255, 255);
 }
-
-.user-table-row-small {
-  padding: 1em 2em;
-}
-
-.user-table-email {
-  padding: 1em 8em;
-}
-
-.user-table-create,
-.user-table-update {
-  padding: 1em 6em;
-}
+//end

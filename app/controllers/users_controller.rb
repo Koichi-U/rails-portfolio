@@ -24,6 +24,18 @@ class UsersController < ApplicationController
     @articles = Article.all
   end
   
+  def url_list
+    @urls = Url.all
+  end
+  
+  def tag_list
+    @tags = Tag.all
+  end
+  
+  def admin_user_list
+    @users = User.where(admin: true)
+  end
+
   private
   def if_not_admin
     redirect_to root_path unless current_user.admin?

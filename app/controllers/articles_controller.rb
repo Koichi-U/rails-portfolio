@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
     })
 
     #直接全データを保存（複数アソシエーションができなかった）
-    article = Article.new(title: article_content.title, text: article_content.text, site_url: article_content.url, url_id: url_create.id, user_id: current_user.id)
+    article = Article.new(title: article_content.title, text: article_content.text, site_url: article_content.site_url, url_id: url_create.id, user_id: current_user.id)
 
     if article.save
       redirect_to :action => "index"

@@ -1,0 +1,31 @@
+<div class="admin-body">
+  <%= render 'admin_shared' %><%#←ここは部分テンプレートを用いている %>
+  <div class="admin-body-common admin-body-url">
+    <div class="admin-table-common url-table">
+      <table>
+        <tr>
+          <th class="url-table-id">id</th>
+          <th class="url-table-site_url">site_url</th>
+          <th class="url-table-title">title</th>
+          <th class="url-table-description">description</th>
+          <th class="url-table-site_name">site_name</th>
+          <th class="url-table-image">image</th>
+          <th class="url-table-create">created_at</th>
+          <th class="url-table-update">updated_at</th>
+        </tr>
+        <% @urls.each do |u| %>
+          <tr>
+            <td><div class="td"><%= u.id %></div></td>
+            <td><div class="td"><%= u.site_url %></div></td>
+            <td><div class="td"><%= u.title %></div></td>
+            <td><div class="td"><%= u.description %></div></td>
+            <td><div class="td"><%= u.site_name %></div></td>
+            <td><div class="td"><%= u.image %></div></td>
+            <td><div class="td"><%= u.created_at %></div></td>
+            <td><div class="td"><%= u.updated_at %></div></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
