@@ -62,33 +62,12 @@
 }
 //end
 
-
-
-
-
-
-
-
-
-table {
-  width: 1067px;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.admin-body-user, .admin-body-article {
+//admin-body共通仕様
+.admin-body-common {
   width: calc(100vw - 250px);
 }
 
-.td {
-  margin: 0px 5px;
-  padding: 5px 0px;
-  height: 21px;
-  overflow: scroll;
-  white-space: nowrap;
-}
-
-.user-table, .article-table, .comment-table {
+.admin-table-common {
   margin-top: 30px;
   font-size: 18px;
   display: flex;
@@ -96,51 +75,28 @@ table {
   text-align: center;
 }
 
-.user-table table th,
-.user-table table td,
-.article-table table th,
-.article-table table td {
+.admin-table-common table {
+  width: 1067px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.admin-table-common th,
+.admin-table-common td {
   border-top: solid 1px rgb(203, 203, 203);
   border-bottom: solid 1px rgb(203, 203, 203);
 }
 
-.user-table table th,
-.article-table table th {
+.admin-table-common th {
+  padding: 1em 0;
   background-color: rgb(225, 225, 225);
 }
 
-.user-table table td,
-.article-table table td {
+.admin-table-common td {
+  margin: 0px 5px;
+  padding: 5px 0px;
+  height: 21px;
+  overflow: scroll;
+  white-space: nowrap;
   background-color: rgb(255, 255, 255);
 }
-
-.user-table-id, .article-table-id {
-  padding: 1em 1.5em;
-  width: 1em;
-}
-
-.user-table-username,
-.article-table-title,
-.article-table-text,
-.article-table-site_url {
-  padding: 1em 1.5em;
-  width: 5em;
-}
-
-.user-table-email {
-  padding: 1em 8em;
-  width: 3em;
-}
-
-.user-table-admin {
-  padding: 1em .5em;
-  width: 3em;
-}
-
-.user-table-create,
-.user-table-update,
-.article-table-create,
-.article-table-update {
-  padding: 1em 2em;
-  width: 4em;
-}
+//end

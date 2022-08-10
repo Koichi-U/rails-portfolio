@@ -19,19 +19,16 @@
         <a <% if current_page?(commentlist_path) %>style="color: #838383;"<% else %>href="<%= commentlist_path %>"<% end %>><p>Comment</p></a>
       </div>
       <div class="admin-list-small admin-list">
-        <a <% if current_page?(commentlist_path) %>style="color: #838383;"<% else %>href="<%= commentlist_path %>"<% end %>><p>Url</p></a>
+        <a <% if current_page?(urllist_path) %>style="color: #838383;"<% else %>href="<%= urllist_path %>"<% end %>><p>Url</p></a>
       </div>
       <div class="admin-list-small admin-list">
-        <a <% if current_page?(commentlist_path) %>style="color: #838383;"<% else %>href="<%= commentlist_path %>"<% end %>><p>Tag</p></a>
+        <a <% if current_page?(taglist_path) %>style="color: #838383;"<% else %>href="<%= taglist_path %>"<% end %>><p>Tag</p></a>
       </div>
     </div>
     <div class="admin-list-large  admin-list">
       <p>Admin</p>
       <div class="admin-list-small admin-list">
-        <a <% if current_page?(userlist_path) %>style="color: #838383;"<% else %>href="<%= userlist_path %>"<% end %>><p>User List</p></a>
-      </div>
-      <div class="admin-list-small admin-list">
-        <a <% if current_page?(userlist_path) %>style="color: #838383;"<% else %>href="<%= userlist_path %>"<% end %>><p>User Invite</p></a>
+        <a <% if current_page?(adminuserlist_path) %>style="color: #838383;"<% else %>href="<%= adminuserlist_path %>"<% end %>><p>User List</p></a>
       </div>
     </div>
   </div>

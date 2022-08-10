@@ -1,0 +1,23 @@
+<div class="admin-body">
+  <%= render 'admin_shared' %><%#←ここは部分テンプレートを用いている %>
+  <div class="admin-body-common admin-body-tag">
+    <div class="admin-table-common tag-table">
+      <table>
+        <tr>
+          <th class="tag-table-id">id</th>
+          <th class="tag-table-name">name</th>
+          <th class="tag-table-create">created_at</th>
+          <th class="tag-table-update">updated_at</th>
+        </tr>
+        <% @tags.each do |u| %>
+          <tr>
+            <td><div class="td"><%= u.id %></div></td>
+            <td><div class="td"><%= u.name %></div></td>
+            <td><div class="td"><%= u.created_at %></div></td>
+            <td><div class="td"><%= u.updated_at %></div></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

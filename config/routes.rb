@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get '/userlist' => 'users#user_list'
   get '/commentlist' => 'users#comment_list'
   get '/articlelist' => 'users#article_list'
+  get '/urllist' => 'users#url_list'
+  get '/taglist' => 'users#tag_list'
+  get '/adminuserlist' => 'users#admin_user_list'
+  get '/adminusernew' => 'users#admin_user_new'
 
   resources :users, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
