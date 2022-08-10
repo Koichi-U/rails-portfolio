@@ -87,3 +87,71 @@
 .field-checkbox input:checked + label {
   background: rgb(251, 2, 2);
 }
+
+
+//show
+.body-article-show {
+  margin: 60px 80px 0px 80px;
+  display: flex;
+  flex-direction: row;
+}
+
+.article-left {
+  margin-right: 5%;
+  padding: 15px;
+  width: 55%;
+  background-color: #D9D9D9;
+}
+
+.article-url-info > p {
+  margin-top: 1px;
+}
+
+.article-url-info-detail {
+  margin: 20px;
+}
+
+.article-url-info-img {
+  display: flex;
+  justify-content: center;
+}
+
+.article-url-info-img img {
+  // margin: 5%;
+  // width: 90%;
+  width: 600px;
+  height: 326px;
+  object-fit: cover;
+}
+
+.article-right {
+  width: 40%;
+}
+
+.article-detail-body {
+  background-color: skyblue;
+}
+
+.article-detail-body ul {
+  margin-bottom: 40px;
+  margin-left: 20px;
+}
+
+.article-comment-body {
+  background-color: skyblue;
+}
+
+.article-comments {
+  margin-left: 20px;
+}
+
+.article-right li {
+  padding: 5px 20px 5px 0px;
+  list-style-position: inside;
+  background-color: aquamarine;
+  border-radius: 20px;
+}
+
+.article-comment-post {
+  background-color: red;
+}
