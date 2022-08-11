@@ -16,6 +16,9 @@
         <a <% if current_page?(articlelist_path) %>style="color: #838383;"<% else %>href="<%= articlelist_path %>"<% end %>><p>Article</p></a>
       </div>
       <div class="admin-list-small admin-list">
+        <a <% if current_page?(tagginglist_path) %>style="color: #838383;"<% else %>href="<%= tagginglist_path %>"<% end %>><p>Tagging</p></a>
+      </div>
+      <div class="admin-list-small admin-list">
         <a <% if current_page?(commentlist_path) %>style="color: #838383;"<% else %>href="<%= commentlist_path %>"<% end %>><p>Comment</p></a>
       </div>
       <div class="admin-list-small admin-list">
