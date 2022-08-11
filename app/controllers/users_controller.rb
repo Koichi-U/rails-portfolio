@@ -24,6 +24,10 @@ class UsersController < ApplicationController
     @articles = Article.all
   end
   
+  def tagging_list
+    @taggings = Tagging.all
+  end
+  
   def url_list
     @urls = Url.all
   end
