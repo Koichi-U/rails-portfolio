@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_28_024053) do
+ActiveRecord::Schema.define(version: 2022_08_04_124942) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.string "text"
+    t.text "site_url"
+    t.integer "user_id", null: false
+    t.integer "url_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
+    t.index ["url_id"], name: "index_articles_on_url_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -46,6 +50,17 @@ ActiveRecord::Schema.define(version: 2022_07_28_024053) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "urls", force: :cascade do |t|
+    t.text "site_url", null: false
+    t.string "site_type"
+    t.text "title"
+    t.text "description"
+    t.string "site_name"
+    t.text "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,6 +76,8 @@ ActiveRecord::Schema.define(version: 2022_07_28_024053) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "urls"
+  add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "taggings", "articles"

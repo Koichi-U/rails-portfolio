@@ -2,10 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.article {
-  font-size: 40px;
+.articles {
+  // width: 1188px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
+.article {
+  margin: 43px;
+  width: 320px;
+  height: 330px;
+  background-color: #D9D9D9;
+  //中央揃え、縦並び
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: flex-start;
+  //↑
+}
+
+.article-img {
+  margin-top: 5px;
+  width: 300px;
+  height: 163px;
+  background-color: #F6F6F6;
+}
+
+.article-img img {
+  object-fit: cover;
+  width: 300px;
+  height: 163px;
+}
+
+.article-text {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-text-title {
+  font-size: 20px;
+  font-weight: bold;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.article-text-description {
+  height: 63px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.article-text-tag, .article-text-description {
+  font-size: 14px;
+}
+
+// チェックボックス
 .field-checkbox {
   display: inline-block;
 }
@@ -30,3 +87,82 @@
 .field-checkbox input:checked + label {
   background: rgb(251, 2, 2);
 }
+
+
+//show
+.body-article-show {
+  width: 100vw;
+  height: calc(100vh - 75px);
+}
+
+.body-article-show-contents {
+  padding: 60px 80px 0px 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.article-left {
+  margin-right: 100px;
+  padding: 20px;
+  width: 700px;
+  background-color: #D9D9D9;
+}
+
+.article-url-info > p {
+  margin-top: 1px;
+}
+
+.article-url-info-detail {
+  margin: 20px;
+}
+
+.article-url-info-img {
+  display: flex;
+  justify-content: center;
+}
+
+.article-url-info-img img {
+  width: 600px;
+  height: 326px;
+  object-fit: cover;
+}
+
+.article-right {
+  width: 400px;
+  height: calc(100vh - 195px);
+  overflow: auto;
+}
+
+.article-detail-body {
+  margin-bottom: 40px;
+  background-color: skyblue;
+}
+
+.article-detail-body ul {
+  margin-left: 50px;
+  // text-decoration: none;
+}
+
+.article-comment-container {
+  background-color: red;
+}
+
+// .article-comment-body {
+//   background-color: skyblue;
+// }
+
+// .article-comments {
+//   margin-left: 20px;
+// }
+
+// .article-right li {
+//   padding: 5px 20px 5px 0px;
+//   list-style-position: inside;
+//   background-color: aquamarine;
+//   border-radius: 20px;
+// }
+
+// .article-comment-post {
+//   background-color: red;
+// }

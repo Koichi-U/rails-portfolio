@@ -1,4 +1,6 @@
 class TaggingsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     # logger.debug(tagging_params["tag_id"])
     tag_id_array = tagging_params["tag_id"]

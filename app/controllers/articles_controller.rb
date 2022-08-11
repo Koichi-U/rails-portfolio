@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @articles = Article.all
+    @Urls = Url.all
   end
 
   def new
@@ -11,8 +14,26 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    article = Article.new(article_params)
-    article.user_id = current_user.id
+    #投稿からURLを取り出すため
+    article_content = Article.new(article_params)
+
+    #OGP情報の取り出し
+    ogp = OpenGraph.new(article_content.site_url)
+    logger.debug(ogp.url)
+
+    #OGP情報の保存
+    url_create = Url.create({
+      site_url: ogp.url,
+      site_type: ogp.type,
+      title: ogp.title,
+      description: ogp.description,
+      # site_name: ogp.site_name,
+      image: ogp.images[0]
+    })
+
+    #直接全データを保存（複数アソシエーションができなかった）
+    article = Article.new(title: article_content.title, text: article_content.text, site_url: article_content.site_url, url_id: url_create.id, user_id: current_user.id)
+
     if article.save
       redirect_to :action => "index"
     else
@@ -22,8 +43,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comments = @article.comments
+    @comments = @article.comments.where(user_id: current_user.id)
     @comment = Comment.new
+  end
+
+  def edit
   end
 
   def delete
@@ -31,6 +55,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, :site_url)
   end
 end

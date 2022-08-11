@@ -1,27 +1,27 @@
-<div class="body-comment-list">
-  This is comment list.
-
-  <div class="comennt-table">
-    <table>
-      <tr>
-        <th class="comennt-table-id">id</th>
-        <th class="comennt-table-content">content</th>
-        <th class="comennt-table-user_id">user_id</th>
-        <th class="comennt-table-article_id">article_id</th>
-        <th class="comennt-table-create">created_at</th>
-        <th class="comennt-table-update">updated_at</th>
-      </tr>
-      <% @comments.each do |c| %>
+<div class="admin-body">
+  <%= render 'admin_shared' %><%#←ここは部分テンプレートを用いている %>
+  <div class="admin-body-common admin-body-comment">
+    <div class="admin-table-common comment-table">
+      <table>
         <tr>
-          <td><%= c.id %></td>
-          <td><%= c.content %></td>
-          <td><%= c.user_id %></td>
-          <td><%= c.article_id %></td>
-          <td><%= c.created_at %></td>
-          <td><%= c.updated_at %></td>
+          <th class="comment-table-id">id</th>
+          <th class="comment-table-content">content</th>
+          <th class="comment-table-user_id">user_id</th>
+          <th class="comment-table-article_id">article_id</th>
+          <th class="comment-table-create">created_at</th>
+          <th class="comment-table-update">updated_at</th>
         </tr>
-      <% end %>
-    </table>
+        <% @comments.each do |c| %>
+          <tr>
+            <td><div class="td"><%= c.id %></div></td>
+            <td><div class="td"><%= c.content %></div></td>
+            <td><div class="td"><%= c.user_id %></div></td>
+            <td><div class="td"><%= c.article_id %></div></td>
+            <td><div class="td"><%= c.created_at %></div></td>
+            <td><div class="td"><%= c.updated_at %></div></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
-
