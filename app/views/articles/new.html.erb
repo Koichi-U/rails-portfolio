@@ -47,7 +47,7 @@ This is new.
     <div class="field-checkbox">
       <% #check_boxはデフォでinputが2つ生成される→trueの時とfalseの時用（https://prograshi.com/framework/rails/check_box/） %>
       <% #multiple: trueで複数保存、配列保存を可能にしている %>
-      <%= f.check_box "tag_id", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
+      <%= f.check_box "tag_id", {id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
       <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
     </div>
   <% end %>

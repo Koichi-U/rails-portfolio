@@ -4,9 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-         validates :username, presence: true
-         has_many :comments, dependent: :destroy
-         has_many :taggings, dependent: :destroy
-         has_many :articles
-         mount_uploader :userimage, ImageUploader
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :taggings, dependent: :destroy
+  has_many :tags
+
+  # mount_uploader :userimage, ImageUploader
+
+  # validates :username, presence: true
 end

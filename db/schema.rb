@@ -37,17 +37,20 @@ ActiveRecord::Schema.define(version: 2022_08_04_124942) do
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id", null: false
     t.integer "article_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["article_id"], name: "index_taggings_on_article_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["user_id"], name: "index_taggings_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_tags_on_name", unique: true
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "urls", force: :cascade do |t|
@@ -82,4 +85,6 @@ ActiveRecord::Schema.define(version: 2022_08_04_124942) do
   add_foreign_key "comments", "users"
   add_foreign_key "taggings", "articles"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "taggings", "users"
+  add_foreign_key "tags", "users"
 end

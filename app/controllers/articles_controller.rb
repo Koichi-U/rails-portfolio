@@ -55,6 +55,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :site_url, taggings_attributes:[:tag_id])
+    params.require(:article).permit(:title, :text, :site_url, taggings_attributes:[{tag_id: []}])
   end
 end
