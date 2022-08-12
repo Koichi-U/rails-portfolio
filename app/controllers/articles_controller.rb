@@ -8,18 +8,18 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    @tags = Tag.all
+    @article.taggings.build
+    @tags = Tag.joins(:user).where(user: { admin: true }).or(Tag.joins(:user).where(user_id: current_user.id))
     @tag = Tag.new
     @tagging = Tagging.new
   end
 
   def create
     #投稿からURLを取り出すため
-    article_content = Article.new(article_params)
+    article = Article.new(article_params)
 
     #OGP情報の取り出し
-    ogp = OpenGraph.new(article_content.site_url)
-    logger.debug(ogp.url)
+    ogp = OpenGraph.new(article.site_url)
 
     #OGP情報の保存
     url_create = Url.create({
@@ -31,8 +31,11 @@ class ArticlesController < ApplicationController
       image: ogp.images[0]
     })
 
+    #投稿からURLを取り出すため
+    article.url_id = url_create.id
+
     #直接全データを保存（複数アソシエーションができなかった）
-    article = Article.new(title: article_content.title, text: article_content.text, site_url: article_content.site_url, url_id: url_create.id, user_id: current_user.id)
+    # article = Article.new(title: article_content.title, text: article_content.text, site_url: article_content.site_url, url_id: url_create.id, user_id: current_user.id)
 
     if article.save
       redirect_to :action => "index"
@@ -55,6 +58,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :site_url, taggings_attributes:[{tag_id: []}])
+    params.require(:article).permit(:title, :text, :site_url, { tag_ids: [] }).merge(user_id: current_user.id)
   end
 end

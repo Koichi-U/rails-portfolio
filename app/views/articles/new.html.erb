@@ -23,20 +23,18 @@ This is new.
           </div>
         <% end %>
       <% end %>
+      <%= form_for @tag do |f| %>
+        <div class="fields">
+          <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name, :size => 140 %>
+          </div>
+        </div>
+        <%= f.submit "タグを追加する" %>
+      <% end %>
     </div>
   </div>
   <%= f.submit "記事を投稿する" %>
-<% end %>
-
-
-<%= form_for @tag do |f| %>
-  <div class="fields">
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name, :size => 140 %>
-    </div>
-  </div>
-  <%= f.submit "タグを追加する" %>
 <% end %>
 
 ------------------------------------------------------------------------

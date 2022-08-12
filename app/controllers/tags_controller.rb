@@ -3,10 +3,13 @@ class TagsController < ApplicationController
 
   def create
     tag = Tag.new(tag_params)
+    tag.user_id = current_user.id
     if tag.save
+      # Logger.debug('aaa')
       redirect_back(fallback_location: root_path)
     else
-      redirect_back(fallback_location: root_path)
+      # Logger.debug('bbb')
+      redirect_back(fallback_location: new_article_path)
     end
   end
 
