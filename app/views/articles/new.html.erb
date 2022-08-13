@@ -1,6 +1,6 @@
 This is new.
 
-<%= form_for @article do |f| %>
+<%= form_with model: @article do |f| %>
   <div class="fields">
     <div class="field">
       <%= f.label :title %>
@@ -14,12 +14,38 @@ This is new.
       <%= f.label :site_url %>
       <%= f.text_field :site_url, :size => 140 %>
     </div>
+    <div class="select">
+      <%= f.fields_for :taggings do |t| %>
+        <% @tags.each do |t| %>
+          <div class="field-checkbox">
+            <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
+            <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
+          </div>
+        <% end %>
+      <% end %>
+<% if false %>
+      <%= f.collection_check_boxes(:tag_id, @tags, :id, :name) do |b| %>
+        <%= b.check_box %>
+        <%= b.label { b.text } %>
+        </br>
+      <% end %>
+<% end %>
+<% if false %>
+<% end %>
+    </div>
   </div>
   <%= f.submit "記事を投稿する" %>
 <% end %>
 
-
-
+<%= form_with model: @tag do |n| %>
+  <div class="fields">
+    <div class="field">
+      <%= n.label :name %>
+      <%= n.text_field :name, :size => 140 %>
+    </div>
+  </div>
+  <%= n.submit "タグを追加する" %>
+<% end %>
 
 ------------------------------------------------------------------------
 <% #練習 %>
@@ -29,19 +55,11 @@ This is new.
     <div class="field-checkbox">
       <% #check_boxはデフォでinputが2つ生成される→trueの時とfalseの時用（https://prograshi.com/framework/rails/check_box/） %>
       <% #multiple: trueで複数保存、配列保存を可能にしている %>
-      <%= f.check_box "tag_id", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
+      <%= f.check_box "tag_id", {id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
       <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
     </div>
   <% end %>
   <%= f.submit "記事を投稿する" %>
 <% end %>
-<%= form_for @tag do |f| %>
-  <div class="fields">
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name, :size => 140 %>
-    </div>
-  </div>
-  <%= f.submit "タグを追加する" %>
-<% end %>
+
 <% end %>

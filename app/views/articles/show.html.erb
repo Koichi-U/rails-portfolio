@@ -2,15 +2,15 @@
   <div class="body-article-show-contents">
     <div class="article-left">
       <div class="article-url-info">
-        <h1><%= Url.find_by(id: @article.id).title %></h1>
+        <h1><%= Url.find_by(id: @article.url_id).title %></h1>
         <p>Tag</p>
         <div class="article-url-info-detail">
           <p>詳細</p>
-          <p><%= Url.find_by(id: @article.id).description %></p>
+          <p><%= Url.find_by(id: @article.url_id).description %></p>
         </div>
       </div>
       <div class="article-url-info-bottom">
-        <p class="article-url-info-img"><a href="<%= Url.find_by(id: @article.id).site_url %>" target="_blank" rel="noopener noreferrer"><img src="<%= Url.find_by(id: @article.id).image %>" alt=""></a></p>
+        <p class="article-url-info-img"><a href="<%= Url.find_by(id: @article.url_id).site_url %>" target="_blank" rel="noopener noreferrer"><img src="<%= Url.find_by(id: @article.url_id).image %>" alt=""></a></p>
       </div>
     </div>
     <div class="article-right">

@@ -1,3 +1,3 @@
 class Url < ApplicationRecord
-  has_one :articles
+  has_one :articles, dependent: :destroy
 end
