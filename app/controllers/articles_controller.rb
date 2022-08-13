@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
     end
 
     if article.valid? && url.valid? && tag_flag
-      #DBへの保存(同時にbuildで関連づけられたデータも保存される)
+      #DBへの保存(同時にbuildで関連づけられたデータも保存される)(urlは関係ないテーブルだが、buildで紐づけることで同時に保存できるようにした)
       article.save
       redirect_to :action => "index"
     else
