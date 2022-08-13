@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article.taggings.build
     
     #Tag一覧 → #[#<Tag:0x00007fee65ac6858 id: 1, name: "aaa", user_id: 1, created_at: Fri, 12 Aug 2022 23:57:55.260947000 JST +09:00, updated_at: Fri, 12 Aug 2022 23:57:55.260947000 JST +09:00>, #<Tag:0x00007fee65ac6790 id: 2, name: "bbb", user_id: 1, created_at: Sat, 13 Aug 2022 00:03:50.301607000 JST +09:00, updated_at: Sat, 13 Aug 2022 00:03:50.301607000 JST +09:00>]
-    @tags = Tag.joins(:user).where(user: { admin: true }).or(Tag.joins(:user).where(user_id: current_user.id)) 
+    @tags = Tag.joins(:user).where(user: { admin: true }).or(Tag.joins(:user).where(user_id: current_user.id)).order("name")
     
     #Tagの新規投稿 → #<Tag:0x00007fee87ba11e8 id: nil, name: nil, user_id: nil, created_at: nil, updated_at: nil>
     @tag = Tag.new
