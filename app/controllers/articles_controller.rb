@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
     ogp = OpenGraph.new(article.site_url)
 
     #OGP情報の保存
-    url = Url.create({
+    url = article.build_url({
       site_url: ogp.url,
       site_type: ogp.type,
       title: ogp.title,
@@ -63,9 +63,9 @@ class ArticlesController < ApplicationController
       tag_flag = false unless tag_post.valid?
     end
 
-    if article.valid? && tag_flag
+    if article.valid? && url.valid? && tag_flag
+      #DBへの保存(同時にbuildで関連づけられたデータも保存される)
       article.save
-      tag_data_array.map {|t| t.save}
       redirect_to :action => "index"
     else
       redirect_to :action => "new"
