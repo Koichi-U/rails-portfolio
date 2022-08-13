@@ -15,26 +15,36 @@ This is new.
       <%= f.text_field :site_url, :size => 140 %>
     </div>
     <div class="select">
-      <%= f.fields_for :tagging do |t| %>
+      <%= f.fields_for :taggings do |t| %>
         <% @tags.each do |t| %>
           <div class="field-checkbox">
-            <%= f.check_box "tag_id", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
+            <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
             <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
           </div>
         <% end %>
       <% end %>
-      <%= form_for @tag do |f| %>
-        <div class="fields">
-          <div class="field">
-            <%= f.label :name %>
-            <%= f.text_field :name, :size => 140 %>
-          </div>
-        </div>
-        <%= f.submit "タグを追加する" %>
+<% if false %>
+      <%= f.collection_check_boxes(:tag_id, @tags, :id, :name) do |b| %>
+        <%= b.check_box %>
+        <%= b.label { b.text } %>
+        </br>
       <% end %>
+<% end %>
+<% if false %>
+<% end %>
     </div>
   </div>
   <%= f.submit "記事を投稿する" %>
+<% end %>
+
+<%= form_with model: @tag do |n| %>
+  <div class="fields">
+    <div class="field">
+      <%= n.label :name %>
+      <%= n.text_field :name, :size => 140 %>
+    </div>
+  </div>
+  <%= n.submit "タグを追加する" %>
 <% end %>
 
 ------------------------------------------------------------------------

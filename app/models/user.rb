@@ -6,7 +6,6 @@ class User < ApplicationRecord
   
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :taggings, dependent: :destroy
   has_many :tags
 
   # mount_uploader :userimage, ImageUploader

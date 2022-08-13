@@ -6,13 +6,26 @@ class ArticlesController < ApplicationController
     @Urls = Url.all
   end
 
+
   def new
+    #Articleの新規投稿 → #<Article:0x00007fee878c34a8 id: nil, title: nil, text: nil, site_url: nil, user_id: nil, url_id: nil, created_at: nil, updated_at: nil>
     @article = Article.new
+    
+    #Tagのbuild → #<Tagging:0x00007fee778ae900 id: nil, tag_id: nil, article_id: nil, user_id: nil, created_at: nil, updated_at: nil>
+    #これがないとCSRF対策の認証が通らない
     @article.taggings.build
-    @tags = Tag.joins(:user).where(user: { admin: true }).or(Tag.joins(:user).where(user_id: current_user.id))
+    
+    #Tag一覧 → #[#<Tag:0x00007fee65ac6858 id: 1, name: "aaa", user_id: 1, created_at: Fri, 12 Aug 2022 23:57:55.260947000 JST +09:00, updated_at: Fri, 12 Aug 2022 23:57:55.260947000 JST +09:00>, #<Tag:0x00007fee65ac6790 id: 2, name: "bbb", user_id: 1, created_at: Sat, 13 Aug 2022 00:03:50.301607000 JST +09:00, updated_at: Sat, 13 Aug 2022 00:03:50.301607000 JST +09:00>]
+    @tags = Tag.joins(:user).where(user: { admin: true }).or(Tag.joins(:user).where(user_id: current_user.id)) 
+    
+    #Tagの新規投稿 → #<Tag:0x00007fee87ba11e8 id: nil, name: nil, user_id: nil, created_at: nil, updated_at: nil>
     @tag = Tag.new
+    
+    #Taggingの新規投稿 → #<Tagging:0x00007fee87ba0fe0 id: nil, tag_id: nil, article_id: nil, user_id: nil, created_at: nil, updated_at: nil>
     @tagging = Tagging.new
+    
   end
+
 
   def create
     #投稿からURLを取り出すため
@@ -22,7 +35,7 @@ class ArticlesController < ApplicationController
     ogp = OpenGraph.new(article.site_url)
 
     #OGP情報の保存
-    url_create = Url.create({
+    url = Url.create({
       site_url: ogp.url,
       site_type: ogp.type,
       title: ogp.title,
@@ -31,18 +44,34 @@ class ArticlesController < ApplicationController
       image: ogp.images[0]
     })
 
-    #投稿からURLを取り出すため
-    article.url_id = url_create.id
+    #Articleにurl_idを保存
+    article.url_id = url.id
 
-    #直接全データを保存（複数アソシエーションができなかった）
-    # article = Article.new(title: article_content.title, text: article_content.text, site_url: article_content.site_url, url_id: url_create.id, user_id: current_user.id)
+    #配列で受け取ったtag_idを配列tag_listにint型で格納
+    tags_array = params[:article][:tag_ids]
+    tag_list = tags_array.map{|n| n.to_i}
+    tag_list.delete(0)
 
-    if article.save
+    #保存できるかを示すため、保存するものを格納するようの変数
+    tag_flag = true
+    tag_data_array = []
+
+    #mapを用いてtagを一つずつ保存する準備
+    tag_list.map do |t|
+      tag_post = article.taggings.build(tag_id: t)
+      tag_data_array.append(tag_post)
+      tag_flag = false unless tag_post.valid?
+    end
+
+    if article.valid? && tag_flag
+      article.save
+      tag_data_array.map {|t| t.save}
       redirect_to :action => "index"
     else
       redirect_to :action => "new"
     end
   end
+
 
   def show
     @article = Article.find(params[:id])
@@ -50,14 +79,17 @@ class ArticlesController < ApplicationController
     @comment = Comment.new
   end
 
+
   def edit
   end
+
 
   def delete
   end
 
+
   private
   def article_params
-    params.require(:article).permit(:title, :text, :site_url, { tag_ids: [] }).merge(user_id: current_user.id)
+    params.require(:article).permit(:title, :text, :site_url, employees_attributes: [{tag_ids: []}]).merge(user_id: current_user.id)
   end
 end
