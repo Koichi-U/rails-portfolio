@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_tag
   
   def set_tag
-    @tags = Tag.all
+    @tags = Tag.joins(:user).where(user: { admin: true }).or(Tag.joins(:user).where(user_id: current_user.id)).order("name")
   end
 
   protected
