@@ -11,8 +11,8 @@ This is new.
       <%= f.text_field :text, :size => 140 %>
     </div>
     <div class="field">
-      <%= f.label :site_url %>
-      <%= f.text_field :site_url, :size => 140, id: 'inputSiteUrl' %>
+      <%= f.label :url %>
+      <%= f.text_field :url, :size => 140, id: 'inputSiteUrl' %>
     </div>
   </div>
   <%= f.submit "記事を投稿する" %>
@@ -55,10 +55,63 @@ This is new.
 
 <script>
 $(document).ready(function() {
-    $(document).on('input', '#inputSiteUrl', function(e) {
-        gon.inputValue = $('#inputSiteUrl').val()
-        console.log(<%= "#{gon.inputValue}" %>);
+  $(document).on('input', '#inputSiteUrl', function(e) {
+    inputValue = $(this).val()
 
+    $.ajax({
+      type: 'GET', // リクエストのタイプ
+      url: '/ajax_ogp', // リクエストを送信するURL
+      data:  { inputValue: inputValue }, //日本語などを考慮してエンコード済み
+      dataType: 'json' // サーバーから返却される型
+    })
+    .done(function(data){
+
+      'url' in data && !data.url !== null
+        ? '_value' in data.url[0] 
+          ? url = data.url[0]._value 
+          : url = ''
+        : url = ''
+        
+      'type' in data && !data.type !== null
+        ? '_value' in data.type[0] 
+          ? type = data.type[0]._value 
+          : type = ''
+        : type = ''
+        
+      'title' in data && !data.title !== null
+        ? '_value' in data.title[0] 
+          ? title = data.title[0]._value 
+          : title = ''
+        : title = ''
+        
+      'description' in data && !data.description !== null
+        ? '_value' in data.description[0] 
+          ? description = data.description[0]._value 
+          : description = ''
+        : description = ''
+        
+      'image' in data && !data.image !== null
+        ? '_value' in data.image[0] 
+          ? image = data.image[0]._value 
+          : image = 'n'
+        : image = 'm'
+
+      inputData = {
+        site_url: url,
+        site_type: type,
+        title: title,
+        description: description,
+        image: image
+      }
+
+      $("#article-img-new").children('img').attr('src', inputData.image)
+      $("#article-text-title-new").text(inputData.title)
+      $("#article-text-description-new").text(inputData.description)
+      
+    })
+    .fail(function(){
+      console.log('aaa')
     });
+  });
 });
 </script>

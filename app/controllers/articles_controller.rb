@@ -11,7 +11,6 @@ class ArticlesController < ApplicationController
     @tags = Tag.all
     @tag = Tag.new
     @tagging = Tagging.new
-    gon.inputValue = 'aaa'
   end
 
   def create
@@ -20,7 +19,7 @@ class ArticlesController < ApplicationController
 
     #OGP情報の取り出し
     ogp = OpenGraph.new(article_content.site_url)
-    logger.debug(ogp.url)
+    image_alt = ogp.metadata.dig(:image, 0, :alt, 0, :_value)
 
     #OGP情報の保存
     url_create = Url.create({
@@ -29,8 +28,11 @@ class ArticlesController < ApplicationController
       title: ogp.title,
       description: ogp.description,
       # site_name: ogp.site_name,
-      image: ogp.images[0]
+      image: ogp.images[0],
+      image_alt: image_alt
     })
+
+    logger.debug(url_create)
 
     #直接全データを保存（複数アソシエーションができなかった）
     article = Article.new(title: article_content.title, text: article_content.text, site_url: article_content.url, url_id: url_create.id, user_id: current_user.id)

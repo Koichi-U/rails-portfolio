@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/userlist' => 'users#user_list'
   get '/commentlist' => 'users#comment_list'
   get '/articlelist' => 'users#article_list'
+  get '/ajax_ogp' => 'functions#ajax_ogp', defaults: { format: :json }
 
   resources :users, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

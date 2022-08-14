@@ -7,6 +7,7 @@ class CreateUrls < ActiveRecord::Migration[6.1]
       t.text :description
       t.string :site_name
       t.text :image
+      t.text :image_alt
 
       t.timestamps
     end
