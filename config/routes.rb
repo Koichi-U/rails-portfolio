@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   get '/userlist' => 'users#user_list'
   get '/commentlist' => 'users#comment_list'
   get '/articlelist' => 'users#article_list'
+  get '/urllist' => 'users#url_list'
+  get '/taglist' => 'users#tag_list'
+  get '/adminuserlist' => 'users#admin_user_list'
+  get '/adminusernew' => 'users#admin_user_new'
+  get '/tagginglist' => 'users#tagging_list'
   get '/ajax_ogp' => 'functions#ajax_ogp', defaults: { format: :json }
 
   resources :users, only: [:show]

@@ -21,6 +21,19 @@ User.create!(username:  "Admin",
                admin: false)
 end
 
+Tag.create!(name: "Ruby on Rails",
+            user_id: 1)
+Tag.create!(name: "Java",
+            user_id: 1)
+Tag.create!(name: "JavaScript",
+            user_id: 1)
+Tag.create!(name: "HTML",
+            user_id: 2)
+Tag.create!(name: "CSS",
+            user_id: 2)
+Tag.create!(name: "C",
+            user_id: 1)
+
 # 5.times do |n|
 #   Article.create!(
 #     title: "article-title-#{n + 1}",

@@ -1,25 +1,57 @@
-This is show.
-<%= @article.id %>
-
-<div class="article-container-show">
-  <div class="article-show">
-    <p><%= @article.title %></p>
-    <p><%= @article.text %></p>
-  </div>
-  <div class="comment-container">
-    <% if user_signed_in? %>
-      <p>コメント一覧</p>
-      <% @comments.each do |c| %>
-        <div>
-          <%= c.content %>
+<div class="body-article-show">
+  <div class="body-article-show-contents">
+    <div class="article-left">
+      <div class="article-url-info">
+        <h1><%= Url.find_by(id: @article.url_id).title %></h1>
+        <p>Tag</p>
+        <div class="article-url-info-detail">
+          <p>詳細</p>
+          <p><%= Url.find_by(id: @article.url_id).description %></p>
+        </div>
+      </div>
+      <div class="article-url-info-bottom">
+        <p class="article-url-info-img"><a href="<%= Url.find_by(id: @article.url_id).site_url %>" target="_blank" rel="noopener noreferrer"><img src="<%= Url.find_by(id: @article.url_id).image %>" alt=""></a></p>
+      </div>
+    </div>
+    <div class="article-right">
+      <% if @article.user_id = current_user.id %>
+        <div class="article-detail-body">
+          <p>投稿メモ</p>
+          <ul>
+            <li><%= @article.title %></li>
+            <li><%= @article.text %></li>
+          </ul>
         </div>
       <% end %>
-      <%= form_with(model: [@article, @comment], local: true) do |f| %>
-        <%= f.text_area :content %>
-        <%= button_tag type: "submit" do %>
-          <i class="far fa-comments"></i> コメントする
+      <div class="article-comment-container">
+        <% if user_signed_in? %>
+          <div class="article-comment-post">
+            <p>コメントする</p>
+            <%= form_with(model: [@article, @comment], local: true) do |f| %>
+              <%= f.text_area :content %>
+              <%= button_tag type: "submit" do %>
+                <i class="far fa-comments"></i> コメントする
+              <% end %>
+            <% end %>
+          </div>
+          <div class="article-comment-body">
+            <p>コメント一覧</p>
+            <div class="article-comments">
+              <ul>
+                <% @comments.reverse.each do |c| %>
+                  <li>
+                    <%= c.content %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% else %>
+          <div class="article-comment-login">
+            <p>ログインしてコメントを残そう</p>
+          </div>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
 </div>
