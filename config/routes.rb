@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/adminuserlist' => 'users#admin_user_list'
   get '/adminusernew' => 'users#admin_user_new'
   get '/tagginglist' => 'users#tagging_list'
+  get '/ajax_ogp' => 'functions#ajax_ogp', defaults: { format: :json }
 
   resources :users, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

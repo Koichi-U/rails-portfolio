@@ -33,6 +33,7 @@ class ArticlesController < ApplicationController
 
     #OGP情報の取り出し
     ogp = OpenGraph.new(article.site_url)
+    image_alt = ogp.metadata.dig(:image, 0, :alt, 0, :_value)
 
     #OGP情報の保存
     url = article.build_url({
@@ -41,7 +42,8 @@ class ArticlesController < ApplicationController
       title: ogp.title,
       description: ogp.description,
       # site_name: ogp.site_name,
-      image: ogp.images[0]
+      image: ogp.images[0],
+      image_alt: image_alt
     })
 
     #Articleにurl_idを保存

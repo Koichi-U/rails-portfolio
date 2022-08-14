@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2022_08_04_124942) do
     t.text "description"
     t.string "site_name"
     t.text "image"
+    t.text "image_alt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
