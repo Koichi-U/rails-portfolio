@@ -3,7 +3,9 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
-    @Urls = Url.all
+    @urls = Url.all
+    logger.debug(@urls)
+
   end
 
 
@@ -40,7 +42,7 @@ class ArticlesController < ApplicationController
     image_alt = ogp.metadata.dig(:image, 0, :alt, 0, :_value)
 
     #OGP情報の保存
-    url = article.build_url({
+    url = Url.create({
       site_url: ogp.url,
       site_type: ogp.type,
       title: ogp.title,
