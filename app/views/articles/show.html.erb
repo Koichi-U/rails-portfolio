@@ -14,14 +14,16 @@
       </div>
     </div>
     <div class="article-right">
-      <% if @article.user_id = current_user.id %>
-        <div class="article-detail-body">
-          <p>投稿メモ</p>
-          <ul>
-            <li><%= @article.title %></li>
-            <li><%= @article.text %></li>
-          </ul>
-        </div>
+      <% if user_signed_in? %><%# 先にここの判別をしないとcurrent_user.idでエラーが出る %>
+        <% if @article.user_id = current_user.id %>
+          <div class="article-detail-body">
+            <p>投稿メモ</p>
+            <ul>
+              <li><%= @article.title %></li>
+              <li><%= @article.text %></li>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
       <div class="article-comment-container">
         <% if user_signed_in? %>

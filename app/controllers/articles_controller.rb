@@ -83,7 +83,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @comments = @article.comments.where(user_id: current_user.id)
+    @comments = @article.comments.where(user_id: current_user.id) if user_signed_in?
     @comment = Comment.new
   end
 
