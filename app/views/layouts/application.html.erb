@@ -37,6 +37,19 @@
           <li>
             <div class="header-list header-dropdown-category">
               <div class="header-dropdown-category-hover">
+                <a href="<%= new_user_session_path %>" class="arrow-bottom-left cursor-pointer">MyCategory</a>
+                <div class="arrow-bottom"></div>
+              </div>
+              <ul>
+                <% @tags.each do |t| %>
+                  <li><a href=""><%= t.name %></a></li>
+                <% end %>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <div class="header-list header-dropdown-category">
+              <div class="header-dropdown-category-hover">
                 <a href="<%= new_user_session_path %>" class="arrow-bottom-left cursor-pointer">Category</a>
                 <div class="arrow-bottom"></div>
               </div>
