@@ -139,16 +139,6 @@ header {
   align-items: center;
 }
 
-.arrow-bottom {
-  width: 13px;
-  height: 13px;
-  margin: 5px 13px 13px 5px;
-  border-bottom: solid 2px #0a0a0a;
-  border-right: solid 2px #0a0a0a;
-  display: inline-block;
-  transform: rotate(45deg);
-}
-
 .arrow-bottom-left {
   margin-right: 6px;
 }
