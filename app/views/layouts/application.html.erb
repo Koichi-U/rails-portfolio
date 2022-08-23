@@ -41,7 +41,7 @@
                 </div>
                 <ul>
                   <% @tags.each do |t| %>
-                    <li><a href=""><%= t.name %></a></li>
+                    <li><a href="<%= tag_path(t.name) %>"><%= t.name %></a></li>
                   <% end %>
                 </ul>
               </div>
@@ -55,7 +55,7 @@
               </div>
               <ul>
                 <% @admintags.each do |t| %>
-                  <li><a href=""><%= t.name %></a></li>
+                  <li><a href="<%= tag_path(t.name) %>"><%= t.name %></a></li>
                 <% end %>
               </ul>
             </div>
