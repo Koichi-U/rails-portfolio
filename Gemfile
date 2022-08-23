@@ -65,3 +65,5 @@ gem 'dotenv-rails'
 gem 'opengraph_parser'
 
 gem 'pry-rails'
+
+gem 'devise-i18n'
