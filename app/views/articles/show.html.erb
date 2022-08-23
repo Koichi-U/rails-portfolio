@@ -2,15 +2,19 @@
   <div class="body-article-show-contents">
     <div class="article-left">
       <div class="article-url-info">
-        <h1><%= Url.find_by(id: @article.url_id).title %></h1>
-        <p>Tag</p>
+        <h1><%= @url.title %></h1>
+        <p>
+          <% @taggings.where(article_id: @article.id).each do |t| %>
+            <a href="" class=""><%= t.tag.name %></a>
+          <% end %>
+        </p>
         <div class="article-url-info-detail">
           <p>詳細</p>
-          <p><%= Url.find_by(id: @article.url_id).description %></p>
+          <p><%= @url.description %></p>
         </div>
       </div>
       <div class="article-url-info-bottom">
-        <p class="article-url-info-img"><a href="<%= Url.find_by(id: @article.url_id).site_url %>" target="_blank" rel="noopener noreferrer"><img src="<%= Url.find_by(id: @article.url_id).image %>" alt=""></a></p>
+        <p class="article-url-info-img"><a href="<%= @url.site_url %>" target="_blank" rel="noopener noreferrer"><img src="<%= @url.image %>" alt=""></a></p>
       </div>
     </div>
     <div class="article-right">

@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
   
   def tag_list
-    @tags = Tag.all
+    @tags = Tag.joins(:user)
   end
   
   def admin_user_list

@@ -16,6 +16,13 @@ This is new.
     </div>
     <div class="select">
       <%= f.fields_for :taggings do |t| %>
+        <% @admintags.each do |t| %>
+          <div class="field-checkbox">
+            <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
+            <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
+          </div>
+        <% end %>
+        <br>
         <% @tags.each do |t| %>
           <div class="field-checkbox">
             <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
@@ -23,27 +30,10 @@ This is new.
           </div>
         <% end %>
       <% end %>
-<% if false %>
-      <%= f.collection_check_boxes(:tag_id, @tags, :id, :name) do |b| %>
-        <%= b.check_box %>
-        <%= b.label { b.text } %>
-        </br>
-      <% end %>
-<% end %>
-<% if false %>
-<% end %>
     </div>
   </div>
   <%= f.submit "記事を投稿する" %>
 <% end %>
-<div class="article">
-  <a class="article-img" id="article-img-new"><img src="" alt=""></a>
-  <div class="article-text" id="article-text-new">
-    <a class="article-text-title" id="article-text-title-new"></a>
-    <a class="article-text-tag" id="article-text-tag-new">Tag</a>
-    <a class="article-text-description" id="article-text-description-new"></a>
-  </div>
-</div>
 
 <%= form_with model: @tag do |n| %>
   <div class="fields">
@@ -53,6 +43,25 @@ This is new.
     </div>
   </div>
   <%= n.submit "タグを追加する" %>
+<% end %>
+
+<div class="article">
+  <a class="article-img" id="article-img-new"><img src="" alt=""></a>
+  <div class="article-text" id="article-text-new">
+    <a class="article-text-title" id="article-text-title-new"></a>
+    <a class="article-text-tag" id="article-text-tag-new">Tag</a>
+    <a class="article-text-description" id="article-text-description-new"></a>
+  </div>
+</div>
+
+
+<% if false %>
+      <%= f.collection_check_boxes(:tag_id, @posttags, :id, :name) do |b| %>
+        <%= b.check_box %>
+        <%= b.label { b.text } %>
+      <% end %>
+<% end %>
+<% if false %>
 <% end %>
 
 ------------------------------------------------------------------------

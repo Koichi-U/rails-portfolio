@@ -3,11 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_tag
   
   def set_tag
-    if user_signed_in?
-      @tags = Tag.joins(:user).where(user: { admin: true }).or(Tag.joins(:user).where(user_id: current_user.id)).order("name")
-    else
-      @tags = Tag.joins(:user).where(user: { admin: true })
-    end
+    @admintags = Tag.joins(:user).where(user: { admin: true }).order("name")
+    @tags = Tag.joins(:user).where(user_id: current_user.id).order("name") if user_signed_in?
   end
 
   protected

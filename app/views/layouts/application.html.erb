@@ -23,38 +23,38 @@
           <% if user_signed_in? && current_user.admin? %>
             <li>
               <div class="header-list">
-                <a href="<%= admin_path %>">Admin</a>
+                <a href="<%= admin_path %>"><i class="fa-solid fa-user-lock"></i><br><p>Admin</p></a>
               </div>
             </li>
           <% end %>
           <% if user_signed_in? %>
             <li>
               <div class="header-list">
-                <a href="<%= new_article_path %>" class="cursor-pointer">Post</a>
+                <a href="<%= new_article_path %>" class="cursor-pointer"><i class="fa-solid fa-square-plus"></i><p>Post</p></a>
+              </div>
+            </li>
+            <li>
+              <div class="header-list header-dropdown-category">
+                <div class="header-dropdown-category-hover">
+                  <a href="<%= new_user_session_path %>" class="arrow-bottom-left cursor-pointer"><i class="fa-solid fa-user-tag"></i><br><p>MyTag</p></a>
+                  <i class="fa-solid fa-angle-down arrow-bottom"></i>
+                </div>
+                <ul>
+                  <% @tags.each do |t| %>
+                    <li><a href=""><%= t.name %></a></li>
+                  <% end %>
+                </ul>
               </div>
             </li>
           <% end %>
           <li>
             <div class="header-list header-dropdown-category">
               <div class="header-dropdown-category-hover">
-                <a href="<%= new_user_session_path %>" class="arrow-bottom-left cursor-pointer">MyCategory</a>
-                <div class="arrow-bottom"></div>
+                <a href="<%= new_user_session_path %>" class="arrow-bottom-left cursor-pointer"><i class="fa-solid fa-tags"></i><br><p>Tag</p></a>
+                <i class="fa-solid fa-angle-down arrow-bottom"></i>
               </div>
               <ul>
-                <% @tags.each do |t| %>
-                  <li><a href=""><%= t.name %></a></li>
-                <% end %>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="header-list header-dropdown-category">
-              <div class="header-dropdown-category-hover">
-                <a href="<%= new_user_session_path %>" class="arrow-bottom-left cursor-pointer">Category</a>
-                <div class="arrow-bottom"></div>
-              </div>
-              <ul>
-                <% @tags.each do |t| %>
+                <% @admintags.each do |t| %>
                   <li><a href=""><%= t.name %></a></li>
                 <% end %>
               </ul>
@@ -63,7 +63,7 @@
           <li>
             <div class="header-box header-white-box">
               <% if user_signed_in? %>
-                <a href="<%= user_path(current_user.id) %>" class="cursor-pointer">Mypage</a>
+                <a href="<%= user_path(current_user.id) %>" class="cursor-pointer"><i class="fa-solid fa-circle-user"></i> Mypage</a>
               <% elsif %>
                 <a href="<%= new_user_session_path %>" class="cursor-pointer">Login</a>
               <% end %>
@@ -89,4 +89,5 @@
 
 <% if user_signed_in? %>
 <% else %>
+<i class="fa-solid fa-user fa-2xl"></i>
 <% end %>
