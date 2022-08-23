@@ -9,7 +9,7 @@
           <a href="<%= article_path(a.id) %>" class="article-text-title"><%= @urls.find_by(id: a.url_id).title %></a>
           <p class="article-text-tags">
             <% @taggings.where(article_id: a.id).each do |t| %>
-              <a href="" class="article-text-tag"><%= t.tag.name %></a>
+              <a href="<%= tag_path(t.tag.name) %>" class="article-text-tag"><%= t.tag.name %></a>
             <% end %>
           </p>
           <a href="" class="article-text-description"><%= @urls.find_by(id: a.url_id).description %></a>
