@@ -6,6 +6,8 @@
         <tr>
           <th class="tag-table-id">id</th>
           <th class="tag-table-name">name</th>
+          <th class="tag-table-user-id">user id</th>
+          <th class="tag-table-admin">(admin)</th>
           <th class="tag-table-create">created_at</th>
           <th class="tag-table-update">updated_at</th>
         </tr>
@@ -13,6 +15,8 @@
           <tr>
             <td><div class="td"><%= u.id %></div></td>
             <td><div class="td"><%= u.name %></div></td>
+            <td><div class="td"><%= u.user_id %></div></td>
+            <td><div class="td"><%= u.user.admin %></div></td>
             <td><div class="td"><%= u.created_at %></div></td>
             <td><div class="td"><%= u.updated_at %></div></td>
           </tr>
