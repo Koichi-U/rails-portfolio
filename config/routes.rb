@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  # get '/tag/:name' => 'tag#category'
   get '/admin' => 'users#admin'
   get '/userlist' => 'users#user_list'
   get '/commentlist' => 'users#comment_list'
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :taggings, only: [:create]
   end
-  resources :tags, only: [:create]
+  resources :tags, only: [:show, :create], param: :name
   resources :taggings, only: [:create]
   root 'articles#index'
 end

@@ -38,12 +38,14 @@ This is new.
 <%= form_with model: @tag do |n| %>
   <div class="fields">
     <div class="field">
-      <%= n.label :name %>
+      <%= n.label :名前 %>
       <%= n.text_field :name, :size => 140 %>
     </div>
   </div>
   <%= n.submit "タグを追加する" %>
 <% end %>
+
+<%= render partial: 'layouts/error_form', locals: { error: @tag } %>
 
 <div class="article">
   <a class="article-img" id="article-img-new"><img src="" alt=""></a>
