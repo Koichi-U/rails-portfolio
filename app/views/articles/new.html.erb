@@ -27,14 +27,14 @@
           </div>
           <div class="select">
             <%= f.fields_for :taggings do |t| %>
-              <% @admintags.each do |t| %>
+              <% @admintags&.each do |t| %>
                 <div class="field-checkbox">
                   <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
                   <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
                 </div>
               <% end %>
               <br>
-              <% @tags.each do |t| %>
+              <% @tags&.each do |t| %>
                 <div class="field-checkbox">
                   <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
                   <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
@@ -79,7 +79,7 @@
 <% #練習 %>
 <% if false %>
 <%= form_for @tagging do |f| %>
-  <% @tags.each do |t| %>
+  <% @tags&.each do |t| %>
     <div class="field-checkbox">
       <% #check_boxはデフォでinputが2つ生成される→trueの時とfalseの時用（https://prograshi.com/framework/rails/check_box/） %>
       <% #multiple: trueで複数保存、配列保存を可能にしている %>

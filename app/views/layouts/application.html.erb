@@ -40,7 +40,7 @@
                   <i class="fa-solid fa-angle-down arrow-bottom"></i>
                 </div>
                 <ul>
-                  <% @tags.each do |t| %>
+                  <% @tags&.each do |t| %>
                     <li><a href="<%= tag_path(t.name) %>"><%= t.name %></a></li>
                   <% end %>
                 </ul>
@@ -54,7 +54,7 @@
                 <i class="fa-solid fa-angle-down arrow-bottom"></i>
               </div>
               <ul>
-                <% @admintags.each do |t| %>
+                <% @admintags&.each do |t| %>
                   <li><a href="<%= tag_path(t.name) %>"><%= t.name %></a></li>
                 <% end %>
               </ul>

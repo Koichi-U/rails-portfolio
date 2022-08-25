@@ -24,6 +24,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  color: var(--main-color);
   font-family: "Inter";
 }
 

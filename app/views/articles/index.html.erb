@@ -1,5 +1,18 @@
 <div class="body-article-index">
-  This is index.
+  <div class="body-article-index-contents">
+    <div class="article-index-top">
+      <div class="article-index-top-contents">
+        <img src="assets/top7.png" alt="" width="394">
+        <div class="article-index-top-content-str">
+          <p>Make</p>
+          <p>Your World</p>
+          <p>Bigger</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
 
   <div class="articles">
     <% @articles.each do |a| %>
@@ -21,10 +34,7 @@
   <a href="<%= new_article_path %>">New</a>
 </div>
 
-<% @taggings.each do |a| %>
-  <%= a.id %>
-  <%= a.tag.id %>
-  <%= a.tag.user.id %>
-  <%= a.tag.user.admin %>
-  <br>
-<% end %>
+<div class="scrolldown4"><span>Scroll</span></div>
+<div id="container">
+<p>このエリアがスクロールすると上にかぶさります</p> 
+<!--/container--></div> 
