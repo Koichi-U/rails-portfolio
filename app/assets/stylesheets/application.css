@@ -19,6 +19,7 @@
 :root {
   --main-color: #112651;
   --sub-color: #ededf0;
+  --header-height: 75px;
 }
 
 * {
@@ -47,10 +48,16 @@ body {
 }
 
 header {
-  height: 75px;
+  height: var(--header-height);
+  width: 100vw;
   border-bottom: 1px solid var(--sub-color);
+  background-color: #fff;
   display: flex;
   justify-content: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
 }
 
 .header-logo {
@@ -182,3 +189,7 @@ header {
   overflow: hidden;
 }
 /* プルダウン-Finish */
+
+.body {
+  margin-top: var(--header-height);
+}

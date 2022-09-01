@@ -195,7 +195,8 @@
 
 //index
 .article-index-top-contents {
-  margin-top: 30px;
+  margin-top: 105px;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -208,3 +209,36 @@
   font-size: 90px;
   font-weight: bold;
 }
+
+.body-article-index {
+  scroll-snap-type: y mandatory;
+	overflow: scroll;
+}
+
+.body-article-index > * {
+  height: calc(100vh - var(--header-height));
+  scroll-snap-align: start;
+}
+
+.body-article-index-fixed {
+  width: 100vw;
+  background-color: var(--sub-color);
+}
+
+.body-article-index-relative {
+  height: calc(100vh - var(--header-height));
+}
+
+@keyframes arrowmove{
+  0%{bottom:1%;}
+  50%{bottom:3%;}
+  100%{bottom:1%;}
+}
+
+#container{
+  background:#eee;
+  padding:600px 0;
+  text-align: center;
+  // z-index: 2;
+}
+
