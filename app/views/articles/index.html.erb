@@ -1,30 +1,52 @@
 <div class="body-article-index">
-  This is index.
-
-  <div class="articles">
-    <% @articles.each do |a| %>
-      <div class="article">
-        <a href="<%= article_path(a.id) %>" class="article-img"><img src="<%= @urls.find_by(id: a.url_id).image %>" alt=""></a>
-        <div class="article-text">
-          <a href="<%= article_path(a.id) %>" class="article-text-title"><%= @urls.find_by(id: a.url_id).title %></a>
-          <p class="article-text-tags">
-            <% @taggings.where(article_id: a.id).each do |t| %>
-              <a href="<%= tag_path(t.tag.name) %>" class="article-text-tag"><%= t.tag.name %></a>
-            <% end %>
-          </p>
-          <a href="" class="article-text-description"><%= @urls.find_by(id: a.url_id).description %></a>
+  <div class="body-article-index-fixed">
+    <div class="body-article-index-contents">
+      <div class="article-index-top-contents">
+        <img src="assets/top7.png" alt="" width="394">
+        <div class="article-index-top-content-str">
+          <p>Make</p>
+          <p>Your World</p>
+          <p>Bigger</p>
         </div>
       </div>
-    <% end %>
+    </div>
+    <div class="scrolldown4"><span>Scroll</span></div>
   </div>
-
-  <a href="<%= new_article_path %>">New</a>
+  <div class="body-article-index-relative">
+    <div class="articles">
+      <% @articles_1_6.each do |a| %>
+        <div class="article">
+          <a href="<%= article_path(a.id) %>" class="article-img"><img src="<%= @urls.find_by(id: a.url_id).image %>" alt=""></a>
+          <div class="article-text">
+            <a href="<%= article_path(a.id) %>" class="article-text-title"><%= @urls.find_by(id: a.url_id).title %></a>
+            <p class="article-text-tags">
+              <% @taggings.where(article_id: a.id).each do |t| %>
+                <a href="<%= tag_path(t.tag.name) %>" class="article-text-tag"><%= t.tag.name %></a>
+              <% end %>
+            </p>
+            <a href="" class="article-text-description"><%= @urls.find_by(id: a.url_id).description %></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="body-article-index-relative">
+    <div class="articles">
+      <% @articles_7_12.each do |a| %>
+        <div class="article">
+          <a href="<%= article_path(a.id) %>" class="article-img"><img src="<%= @urls.find_by(id: a.url_id).image %>" alt=""></a>
+          <div class="article-text">
+            <a href="<%= article_path(a.id) %>" class="article-text-title"><%= @urls.find_by(id: a.url_id).title %></a>
+            <p class="article-text-tags">
+              <% @taggings.where(article_id: a.id).each do |t| %>
+                <a href="<%= tag_path(t.tag.name) %>" class="article-text-tag"><%= t.tag.name %></a>
+              <% end %>
+            </p>
+            <a href="" class="article-text-description"><%= @urls.find_by(id: a.url_id).description %></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<% @taggings.each do |a| %>
-  <%= a.id %>
-  <%= a.tag.id %>
-  <%= a.tag.user.id %>
-  <%= a.tag.user.admin %>
-  <br>
-<% end %>

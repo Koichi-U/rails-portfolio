@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   
   def set_tag
     @admintags = Tag.joins(:user).where(user: { admin: true }).order("name")
-    @tags = Tag.joins(:user).where(user_id: current_user.id).order("name") if user_signed_in?
+    user_signed_in? && !current_user.admin? ? @tags = Tag.joins(:user).where(user_id: current_user.id).order("name") : @tags = nil
   end
 
   protected

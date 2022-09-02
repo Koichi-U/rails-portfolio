@@ -6,6 +6,12 @@ class ArticlesController < ApplicationController
     @urls = Url.all
     @taggings = Tagging.joins(tag: :user).where(users: { admin: true })
     logger.debug(@taggings)
+
+    @articles_1_6 = Article.limit(6)
+    @articles_7_12 = Article.limit(6).offset(6)
+    @articles_13_18 = Article.limit(6).offset(12)
+    @articles_19_24 = Article.limit(6).offset(18)
+    
   end
 
 

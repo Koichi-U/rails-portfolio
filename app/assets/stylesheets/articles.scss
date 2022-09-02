@@ -3,14 +3,15 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .articles {
-  // width: 1188px;
+  margin: 10px 0px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .article {
-  margin: 43px;
+  margin: 0px 35px;
   width: 320px;
   height: 330px;
   background-color: var(--sub-color);
@@ -18,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: flex-start;
+  align-content: center;
   //↑
 }
 
@@ -185,3 +186,54 @@
 // .article-comment-post {
 //   background-color: red;
 // }
+
+// new
+.body-article-new-contents {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+//index
+.body-article-index-contents {
+  height: 100%;
+}
+
+.article-index-top-contents {
+  margin-top: 105px;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-index-top-content-str {
+  margin-left: 2em;
+  color: #201151;
+  font-size: 90px;
+  font-weight: bold;
+}
+
+.body-article-index {
+  height: calc(100vh - var(--header-height));
+  scroll-snap-type: y mandatory;
+	overflow: scroll;
+}
+
+.body-article-index > * {
+  height: calc(100vh - var(--header-height));
+  scroll-snap-align: start;
+  background-color: red;
+}
+
+.body-article-index-fixed {
+  width: 100vw;
+  background-color: var(--sub-color);
+}
+
+@keyframes arrowmove{
+  0%{bottom:1%;}
+  50%{bottom:3%;}
+  100%{bottom:1%;}
+}
