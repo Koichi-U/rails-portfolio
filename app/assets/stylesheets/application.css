@@ -20,7 +20,13 @@
   --main-color: #112651;
   --sub-color: #ededf0;
   --white-color: white;
+  --picture-color: #fdfdff;
   --header-height: 75px;
+  --body-height: calc(100vh - var(--header-height));
+
+  --article-height: 330px;
+  --article-weight: 320px;
+  --article-content-weight: 320px;
 }
 
 * {

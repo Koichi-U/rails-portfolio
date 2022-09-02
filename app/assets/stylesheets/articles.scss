@@ -4,18 +4,17 @@
 
 //index
 .body-article-index {
-  height: calc(100vh - var(--header-height));
+  height: var(--body-height);
   scroll-snap-type: y mandatory;
 	overflow: scroll;
 }
 
 .body-article-index > * {
-  height: calc(100vh - var(--header-height));
+  height: var(--body-height);
   scroll-snap-align: start;
 }
 
 .body-article-index-fixed {
-  width: 100vw;
   background-color: var(--white-color);
 }
 
@@ -24,8 +23,6 @@
 }
 
 .article-index-top-contents {
-  margin-top: 105px;
-  width: 100vw;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -38,7 +35,7 @@
 
 .article-index-top-content-str {
   margin-left: 2em;
-  color: #201151;
+  color: var(--white-color);
   font-size: 90px;
   font-weight: bold;
 }
@@ -48,38 +45,38 @@
   margin: 10px 0px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .article {
-  margin: 0px 35px;
-  width: 320px;
-  height: 330px;
+  margin: calc((var(--body-height) - var(--article-height) * 2) / 4) 35px;
+  height: var(--article-height);
+  width: var(--article-weight);
   background-color: var(--sub-color);
   //中央揃え、縦並び
   display: flex;
-  flex-direction: column;
   align-items: center;
   align-content: center;
+  flex-direction: column;
   //↑
 }
 
 .article-img {
   margin-top: 5px;
-  width: 300px;
   height: 163px;
-  background-color: #fdfdff;
+  width: var(--article-content-weight);
+  background-color: var(--picture-color);
 }
 
 .article-img img {
-  object-fit: cover;
-  width: 300px;
   height: 163px;
+  width: var(--article-content-weight);
+  object-fit: cover;
 }
 
 .article-text {
-  width: 300px;
+  width: var(--article-content-weight);
   display: flex;
   flex-direction: column;
 }
@@ -113,41 +110,9 @@
 .article-text-tag {
   margin-right: 5px;
   padding: 0px .2em;
-  color: #ededf0;
+  color: var(--white-color);
   background-color: var(--main-color);
   border: 1px solid var(--main-color);
-}
-
-.article-text-tag:link, 
-.article-text-tag:visited {
-  color: #ededf0;
-}
-
-// チェックボックス
-.field-checkbox {
-  display: inline-block;
-}
-
-.field-checkbox input {
-  display: none;
-}
-
-.field-checkbox label {
-  padding: 10px 20px;
-  border-radius: 20px;
-  color: #ededf0;
-  background: #112651;
-  display: inline-block;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.field-checkbox input:hover + label {
-  background: rgba(17, 38, 81, 0.5);
-}
-
-.field-checkbox input:checked + label {
-  background: rgb(17, 38, 81);
 }
 
 
@@ -215,4 +180,30 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+// チェックボックス
+.field-checkbox {
+  display: inline-block;
+}
+
+.field-checkbox input {
+  display: none;
+}
+
+.field-checkbox label {
+  padding: 10px 20px;
+  color: #ededf0;
+  background: #112651;
+  display: inline-block;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.field-checkbox input:hover + label {
+  background: rgba(17, 38, 81, 0.5);
+}
+
+.field-checkbox input:checked + label {
+  background: rgb(17, 38, 81);
 }
