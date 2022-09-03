@@ -29,14 +29,14 @@
             <%= f.fields_for :taggings do |t| %>
               <% @admintags&.each do |t| %>
                 <div class="field-checkbox">
-                  <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
+                  <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: ""}, t.id %>
                   <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
                 </div>
               <% end %>
               <br>
               <% @tags&.each do |t| %>
                 <div class="field-checkbox">
-                  <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: "", checked: true}, t.id %>
+                  <%= f.check_box "tag_ids", {multiple: true, id: "field-checkbox-#{t.id}", checked_value: "#{t.id}", unchecked_value: ""}, t.id %>
                   <label for= "field-checkbox-<%= t.id %>"><%= t.name %></label>
                 </div>
               <% end %>

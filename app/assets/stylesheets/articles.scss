@@ -191,17 +191,19 @@
 
 .field-checkbox label {
   padding: 10px 20px;
-  color: #ededf0;
-  background: #112651;
+  color: var(--main-color);
+  background: var(--white-color);
   display: inline-block;
   border-radius: 20px;
+  border: 0.5px solid var(--main-color);
   transition: 0.5s;
 }
 
 .field-checkbox input:hover + label {
-  background: rgba(17, 38, 81, 0.5);
+  background: var(--sub-color);
 }
 
 .field-checkbox input:checked + label {
-  background: rgb(17, 38, 81);
+  color: var(--white-color);
+  background: var(--main-color);
 }
