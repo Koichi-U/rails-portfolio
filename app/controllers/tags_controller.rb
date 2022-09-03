@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @tag = Tag.find_by(name: params[:name])
@@ -20,6 +20,12 @@ class TagsController < ApplicationController
     # binding.pry
       render template: "articles/new"
     end
+  end
+
+  def category
+  end
+
+  def originalcategory
   end
 
   private

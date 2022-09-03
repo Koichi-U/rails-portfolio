@@ -3,15 +3,15 @@
 <div class="articles">
   <% @tagarticles.each do |t| %>
     <div class="article">
-      <a href="<%= article_path(t.article.id) %>" class="article-img"><img src="<%= @urls.find_by(id: t.article.url_id).image %>" alt=""></a>
+      <a href="<%= article_path(t.article.id) %>" class="article-img"><img src="<%= @urls.find_by(id: t.article.url_id).site_image %>" alt=""></a>
       <div class="article-text">
-        <a href="<%= article_path(t.article.id) %>" class="article-text-title"><%= @urls.find_by(id: t.article.url_id).title %></a>
+        <a href="<%= article_path(t.article.id) %>" class="article-text-title"><%= @urls.find_by(id: t.article.url_id).site_title %></a>
         <p class="article-text-tags">
           <% @taggings.where(article_id: t.article.id).each do |tg| %>
             <a href="<%= tag_path(tg.tag.name) %>" class="article-text-tag"><%= tg.tag.name %></a>
           <% end %>
         </p>
-        <a class="article-text-description"><%= @urls.find_by(id: t.article.url_id).description %></a>
+        <a class="article-text-description"><%= @urls.find_by(id: t.article.url_id).site_description %></a>
       </div>
     </div>
   <% end %>
