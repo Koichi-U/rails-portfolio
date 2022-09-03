@@ -27,6 +27,12 @@
   --article-height: 330px;
   --article-width: 320px;
   --article-content-width: 300px;
+
+  --admin-color: rgb(0, 0, 0);
+  --admin-table-header-color: rgb(225, 225, 225);
+  --admin-table-line-color: #cbcbcb;
+  --admin-header-width: 250px;
+  --admin-common-width: calc(100vh - var(--admin-header-width));
 }
 
 * {
