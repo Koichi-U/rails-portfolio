@@ -34,30 +34,36 @@
               </div>
             </li>
             <li>
-              <div class="header-list header-dropdown-category">
-                <div class="header-dropdown-category-hover">
-                  <a href="<%= new_user_session_path %>" class="arrow-bottom-left cursor-pointer">MyCategory</a>
-                  <i class="fa-solid fa-angle-down arrow-bottom"></i>
-                </div>
-                <ul>
-                  <% @tags&.each do |t| %>
-                    <li><a href="<%= tag_path(t.name) %>"><%= t.name %></a></li>
-                  <% end %>
-                </ul>
+              <div class="header-list">
+                <a href="<%= search_path %>" class="cursor-pointer">Search</a>
               </div>
             </li>
           <% end %>
           <li>
             <div class="header-list header-dropdown-category">
-              <div class="header-dropdown-category-hover">
-                <a href="<%= new_user_session_path %>" class="arrow-bottom-left cursor-pointer">Category</a>
-                <i class="fa-solid fa-angle-down arrow-bottom"></i>
-              </div>
-              <ul>
-                <% @admintags&.each do |t| %>
-                  <li><a href="<%= tag_path(t.name) %>"><%= t.name %></a></li>
-                <% end %>
-              </ul>
+              <% if user_signed_in? %>
+                <div class="header-list header-dropdown-category">
+                  <div class="header-dropdown-category-hover">
+                    <a href="<%= originalcategory_path %>" class="arrow-bottom-left cursor-pointer">MyCategory</a>
+                    <i class="fa-solid fa-angle-down arrow-bottom"></i>
+                  </div>
+                  <ul>
+                    <% @tags&.each do |t| %>
+                      <li><a href="<%= tag_path(t.name) %>"><%= t.name %></a></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% elsif %>
+                <<div class="header-dropdown-category-hover">
+                  <a href="<%= category_path %>" class="arrow-bottom-left cursor-pointer">Category</a>
+                  <i class="fa-solid fa-angle-down arrow-bottom"></i>
+                </div>
+                <ul>
+                  <% @admintags&.each do |t| %>
+                    <li><a href="<%= tag_path(t.name) %>"><%= t.name %></a></li>
+                  <% end %>
+                </ul>
+              <% end %>
             </div>
           </li>
           <li>
