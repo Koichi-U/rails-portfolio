@@ -100,9 +100,13 @@ class ArticlesController < ApplicationController
   end
 
   def search
+    @search_word = params[:search]
+
     @articles = Article.all
     @urls = Url.all
     @taggings = Tagging.joins(tag: :user).where(users: { admin: true })
+    
+    @articles = @articles.joins(:url).where("site_title LIKE ? ", "%#{@search_word}%") if @search_word.present?
   end
 
 
