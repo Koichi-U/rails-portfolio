@@ -99,6 +99,12 @@ class ArticlesController < ApplicationController
   def delete
   end
 
+  def search
+    @articles = Article.all
+    search = params[:search]
+    @articles = @articles.joins(:user).where("body LIKE ? OR name LIKE ?", "%#{search}%", "%#{search}%") if search.present?
+  end
+
 
   private
   def article_params

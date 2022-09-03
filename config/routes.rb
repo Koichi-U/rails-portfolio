@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/urllist' => 'users#url_list'
   get '/taglist' => 'users#tag_list'
   get '/category' => 'tags#category'
+  get '/search' => 'articles#search'
   get '/originalcategory' => 'tags#originalcategory'
   get '/adminuserlist' => 'users#admin_user_list'
   get '/adminusernew' => 'users#admin_user_new'
