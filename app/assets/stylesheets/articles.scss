@@ -52,7 +52,7 @@
 .article {
   margin: calc((var(--body-height) - var(--article-height) * 2) / 4) 35px;
   height: var(--article-height);
-  width: var(--article-weight);
+  width: var(--article-width);
   background-color: var(--sub-color);
   //中央揃え、縦並び
   display: flex;
@@ -65,18 +65,18 @@
 .article-img {
   margin-top: 5px;
   height: 163px;
-  width: var(--article-content-weight);
+  width: var(--article-content-width);
   background-color: var(--picture-color);
 }
 
 .article-img img {
   height: 163px;
-  width: var(--article-content-weight);
+  width: var(--article-content-width);
   object-fit: cover;
 }
 
 .article-text {
-  width: var(--article-content-weight);
+  width: var(--article-content-width);
   display: flex;
   flex-direction: column;
 }
