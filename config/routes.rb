@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   get '/articlelist' => 'users#article_list'
   get '/urllist' => 'users#url_list'
   get '/taglist' => 'users#tag_list'
+  get '/search' => 'articles#search'
   get '/adminuserlist' => 'users#admin_user_list'
   get '/adminusernew' => 'users#admin_user_new'
   get '/tagginglist' => 'users#tagging_list'
   get '/ajax_ogp' => 'functions#ajax_ogp', defaults: { format: :json }
+  get '/ajax_search' => 'functions#ajax_search'
 
   resources :users, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

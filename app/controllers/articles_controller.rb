@@ -47,11 +47,11 @@ class ArticlesController < ApplicationController
     url = Url.create({
       site_url: ogp.url,
       site_type: ogp.type,
-      title: ogp.title,
-      description: ogp.description,
+      site_title: ogp.title,
+      site_description: ogp.description,
       # site_name: ogp.site_name,
-      image: ogp.images[0],
-      image_alt: image_alt
+      site_image: ogp.images[0],
+      site_image_alt: image_alt
     })
 
     #Articleにurl_idを保存
@@ -97,6 +97,16 @@ class ArticlesController < ApplicationController
 
 
   def delete
+  end
+
+  def search
+    @search_word = params[:search]
+
+    @articles = Article.all
+    @urls = Url.all
+    @taggings = Tagging.joins(tag: :user).where(users: { admin: true })
+    
+    @articles = @articles.joins(:url).where("site_title LIKE ? ", "%#{@search_word}%") if @search_word.present?
   end
 
 

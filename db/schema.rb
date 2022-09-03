@@ -54,11 +54,11 @@ ActiveRecord::Schema.define(version: 2022_08_04_124942) do
   create_table "urls", force: :cascade do |t|
     t.text "site_url", null: false
     t.string "site_type"
-    t.text "title"
-    t.text "description"
+    t.text "site_title"
+    t.text "site_description"
     t.string "site_name"
-    t.text "image"
-    t.text "image_alt"
+    t.text "site_image"
+    t.text "site_image_alt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
