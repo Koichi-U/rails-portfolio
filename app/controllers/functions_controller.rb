@@ -13,4 +13,18 @@ class FunctionsController < ApplicationController
     end
   end
 
+  def ajax_search
+    search_word = params[:inputValue]
+
+    @articles = Article.all
+    @articles = @articles.joins(:url).where("site_title LIKE ? ", "%#{search_word}%") if search_word.present?
+
+    # render partial: 'ajax_search', locals: { articles: @articles }
+
+    respond_to do |format|
+      format.js
+      # format.json { render json: @articles }
+    end
+  end
+
 end
