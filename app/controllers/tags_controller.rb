@@ -22,6 +22,12 @@ class TagsController < ApplicationController
     end
   end
 
+  def category
+  end
+
+  def originalcategory
+  end
+
   private
   def tag_params
     params.require(:tag).permit(:name)

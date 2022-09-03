@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/articlelist' => 'users#article_list'
   get '/urllist' => 'users#url_list'
   get '/taglist' => 'users#tag_list'
+  get '/category' => 'tags#category'
+  get '/originalcategory' => 'tags#originalcategory'
   get '/adminuserlist' => 'users#admin_user_list'
   get '/adminusernew' => 'users#admin_user_new'
   get '/tagginglist' => 'users#tagging_list'
