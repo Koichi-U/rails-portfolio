@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :if_not_admin, only: [:admin, :user_list, :comment_list, :article_list]
+  before_action :if_not_admin, only: [:admin, :user_list, :comment_list, :article_list, :tagging_list, :url_list, :tag_list, :admin_user_list]
+  
   def show
     @user = User.find(params[:id])
     user_article_ids = Comment.where(user_id: current_user.id).select(:article_id).order(:article_id)
