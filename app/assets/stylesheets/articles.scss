@@ -4,18 +4,17 @@
 
 //index
 .body-article-index {
-  height: calc(100vh - var(--header-height));
+  height: var(--body-height);
   scroll-snap-type: y mandatory;
 	overflow: scroll;
 }
 
 .body-article-index > * {
-  height: calc(100vh - var(--header-height));
+  height: var(--body-height);
   scroll-snap-align: start;
 }
 
 .body-article-index-fixed {
-  width: 100vw;
   background-color: var(--white-color);
 }
 
@@ -24,8 +23,6 @@
 }
 
 .article-index-top-contents {
-  margin-top: 105px;
-  width: 100vw;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -38,7 +35,7 @@
 
 .article-index-top-content-str {
   margin-left: 2em;
-  color: #201151;
+  color: var(--white-color);
   font-size: 90px;
   font-weight: bold;
 }
@@ -48,38 +45,38 @@
   margin: 10px 0px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .article {
-  margin: 0px 35px;
-  width: 320px;
-  height: 330px;
+  margin: calc((var(--body-height) - var(--article-height) * 2) / 4) 35px;
+  height: var(--article-height);
+  width: var(--article-width);
   background-color: var(--sub-color);
   //中央揃え、縦並び
   display: flex;
-  flex-direction: column;
   align-items: center;
   align-content: center;
+  flex-direction: column;
   //↑
 }
 
 .article-img {
   margin-top: 5px;
-  width: 300px;
   height: 163px;
-  background-color: #fdfdff;
+  width: var(--article-content-width);
+  background-color: var(--picture-color);
 }
 
 .article-img img {
-  object-fit: cover;
-  width: 300px;
   height: 163px;
+  width: var(--article-content-width);
+  object-fit: cover;
 }
 
 .article-text {
-  width: 300px;
+  width: var(--article-content-width);
   display: flex;
   flex-direction: column;
 }
@@ -113,14 +110,74 @@
 .article-text-tag {
   margin-right: 5px;
   padding: 0px .2em;
-  color: #ededf0;
+  color: var(--white-color);
   background-color: var(--main-color);
   border: 1px solid var(--main-color);
 }
 
-.article-text-tag:link, 
-.article-text-tag:visited {
-  color: #ededf0;
+
+//show
+.body-article-show-contents {
+  padding: 60px 80px 0px 80px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.article-left {
+  margin-right: 100px;
+  padding: 20px;
+  width: 700px;
+  background-color: var(--sub-color);
+}
+
+.article-url-info > p {
+  margin-top: 1px;
+}
+
+.article-url-info-tags {
+  margin: 7px 0px;
+}
+
+.article-url-info-detail {
+  margin: 20px;
+}
+
+.article-url-info-img {
+  display: flex;
+  justify-content: center;
+}
+
+.article-url-info-img img {
+  height: 326px;
+  width: 600px;
+  object-fit: cover;
+}
+
+.article-right {
+  height: calc(100vh - 195px);
+  width: 400px;
+  overflow: auto;
+}
+
+.article-detail-body {
+  margin-bottom: 40px;
+}
+
+.article-detail-body ul {
+  margin-left: 50px;
+}
+
+.article-comment-container {
+  background-color: red;
+}
+
+
+// new
+.body-article-new-contents {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 // チェックボックス
@@ -134,85 +191,19 @@
 
 .field-checkbox label {
   padding: 10px 20px;
-  border-radius: 20px;
-  color: #ededf0;
-  background: #112651;
+  color: var(--main-color);
+  background: var(--white-color);
   display: inline-block;
-  cursor: pointer;
+  border-radius: 20px;
+  border: 0.5px solid var(--main-color);
   transition: 0.5s;
 }
 
 .field-checkbox input:hover + label {
-  background: rgba(17, 38, 81, 0.5);
+  background: var(--sub-color);
 }
 
 .field-checkbox input:checked + label {
-  background: rgb(17, 38, 81);
-}
-
-
-//show
-.body-article-show {
-  width: 100vw;
-  height: calc(100vh - 75px);
-}
-
-.body-article-show-contents {
-  padding: 60px 80px 0px 80px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.article-left {
-  margin-right: 100px;
-  padding: 20px;
-  width: 700px;
-  background-color: #D9D9D9;
-}
-
-.article-url-info > p {
-  margin-top: 1px;
-}
-
-.article-url-info-detail {
-  margin: 20px;
-}
-
-.article-url-info-img {
-  display: flex;
-  justify-content: center;
-}
-
-.article-url-info-img img {
-  width: 600px;
-  height: 326px;
-  object-fit: cover;
-}
-
-.article-right {
-  width: 400px;
-  height: calc(100vh - 195px);
-  overflow: auto;
-}
-
-.article-detail-body {
-  margin-bottom: 40px;
-  background-color: skyblue;
-}
-
-.article-detail-body ul {
-  margin-left: 50px;
-  // text-decoration: none;
-}
-
-.article-comment-container {
-  background-color: red;
-}
-
-// new
-.body-article-new-contents {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  color: var(--white-color);
+  background: var(--main-color);
 }
