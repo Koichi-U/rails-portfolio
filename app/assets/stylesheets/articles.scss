@@ -117,27 +117,26 @@
 
 
 //show
-.body-article-show {
-  width: 100vw;
-  height: calc(100vh - 75px);
-}
-
 .body-article-show-contents {
   padding: 60px 80px 0px 80px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  flex-direction: row;
 }
 
 .article-left {
   margin-right: 100px;
   padding: 20px;
   width: 700px;
-  background-color: #D9D9D9;
+  background-color: var(--sub-color);
 }
 
 .article-url-info > p {
   margin-top: 1px;
+}
+
+.article-url-info-tags {
+  margin: 7px 0px;
 }
 
 .article-url-info-detail {
@@ -163,17 +162,17 @@
 
 .article-detail-body {
   margin-bottom: 40px;
-  background-color: skyblue;
+  // background-color: skyblue;
 }
 
 .article-detail-body ul {
   margin-left: 50px;
-  // text-decoration: none;
 }
 
 .article-comment-container {
   background-color: red;
 }
+
 
 // new
 .body-article-new-contents {

@@ -3,9 +3,9 @@
     <div class="article-left">
       <div class="article-url-info">
         <h1><%= @url.title %></h1>
-        <p>
+        <p class="article-url-info-tags">
           <% @taggings.where(article_id: @article.id).each do |t| %>
-            <a href="" class=""><%= t.tag.name %></a>
+            <a href="<%= tag_path(t.tag.name) %>" class="article-text-tag"><%= t.tag.name %></a>
           <% end %>
         </p>
         <div class="article-url-info-detail">
