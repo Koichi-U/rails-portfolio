@@ -149,20 +149,19 @@
 }
 
 .article-url-info-img img {
-  width: 600px;
   height: 326px;
+  width: 600px;
   object-fit: cover;
 }
 
 .article-right {
-  width: 400px;
   height: calc(100vh - 195px);
+  width: 400px;
   overflow: auto;
 }
 
 .article-detail-body {
   margin-bottom: 40px;
-  // background-color: skyblue;
 }
 
 .article-detail-body ul {
