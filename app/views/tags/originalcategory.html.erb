@@ -1,1 +1,30 @@
-vvv
+<div class="body-tags-o-category body-common-margin">
+  <div class="body-tags-o-category-top">
+    <h1>My Category</h1>
+    <div class="body-tags-o-category-top-tags">
+      <% @tags&.each do |t| %>
+        <a href="<%= tag_path(t.name) %>"><%= t.name %></a>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="body-tags-o-category-articles">
+    <h3>自作したタグが付いた記事一覧</h3>
+    <div class="articles">
+      <% @tagarticles.each do |t| %>
+        <div class="article">
+          <a href="<%= article_path(t.article.id) %>" class="article-img"><img src="<%= @urls.find_by(id: t.article.url_id).site_image %>" alt=""></a>
+          <div class="article-text">
+            <a href="<%= article_path(t.article.id) %>" class="article-text-title"><%= @urls.find_by(id: t.article.url_id).site_title %></a>
+            <p class="article-text-tags">
+              <% @taggings.where(article_id: t.article.id).each do |tg| %>
+                <a href="<%= tag_path(tg.tag.name) %>" class="article-text-tag"><%= tg.tag.name %></a>
+              <% end %>
+            </p>
+            <a class="article-text-description"><%= @urls.find_by(id: t.article.url_id).site_description %></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

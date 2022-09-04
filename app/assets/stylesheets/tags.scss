@@ -1,3 +1,29 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.body-common-margin {
+  margin: calc(50px + var(--header-height)) 80px 0px 80px;
+}
+
+.body-tags-o-category-top-tags {
+  display: flex;
+  justify-content: center;
+}
+
+.body-tags-o-category-top-tags a {
+  margin: 0px 10px;
+  padding: 0px .2em;
+  font-size: 25px;
+  color: var(--white-color);
+  background-color: var(--main-color);
+}
+
+.body-tags-o-category-articles {
+  margin-top: 40px;
+}
+
+.body-tags-o-category-articles > h3 {
+  display: flex;
+  justify-content: center;
+}

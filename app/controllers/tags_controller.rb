@@ -23,9 +23,14 @@ class TagsController < ApplicationController
   end
 
   def category
+
   end
 
   def originalcategory
+    @urls = Url.all
+    @tagarticles = Tagging.joins(:tag).where(tags: { user_id: current_user.id }).select(:article_id).distinct
+    @taggings = Tagging.joins(tag: :user).where(users: { admin: false })
+    # binding.pry
   end
 
   private
