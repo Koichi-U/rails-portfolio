@@ -207,3 +207,22 @@
   color: var(--white-color);
   background: var(--main-color);
 }
+
+//search
+.body-articles-search-searchfield > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body-articles-search-searchfield input {
+  font-size: 20px;
+}
+
+.body-articles-search-searchfield input:last-child {
+  margin-left: 20px;
+}
+
+.search-field {
+  border: 1px solid var(--main-color);
+}
