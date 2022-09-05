@@ -89,7 +89,6 @@ class ArticlesController < ApplicationController
     @taggings = Tagging.joins(tag: :user).where(users: { admin: true }, article_id: params[:id])
     @comments = @article.comments.where(user_id: current_user.id) if user_signed_in?
     @comment = Comment.new
-    binding.pry
   end
 
 
