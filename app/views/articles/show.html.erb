@@ -2,19 +2,21 @@
   <div class="body-article-show-contents">
     <div class="article-left">
       <div class="article-url-info">
-        <h1><%= @url.site_title %></h1>
+        <h1><%= @article.url.site_title %></h1>
         <p class="article-url-info-tags">
-          <% @taggings.where(article_id: @article.id).each do |t| %>
-            <a href="<%= tag_path(t.tag.name) %>" class="article-text-tag"><%= t.tag.name %></a>
+          <% @article.taggings.each do |t| %>
+            <% if t.tag.user.admin? %>
+              <a href="<%= tag_path(t.tag.name) %>" class="article-text-tag"><%= t.tag.name %></a>
+            <% end %>
           <% end %>
         </p>
         <div class="article-url-info-detail">
           <p>詳細</p>
-          <p><%= @url.site_description %></p>
+          <p><%= @article.url.site_description %></p>
         </div>
       </div>
       <div class="article-url-info-bottom">
-        <p class="article-url-info-img"><a href="<%= @url.site_url %>" target="_blank" rel="noopener noreferrer"><img src="<%= @url.site_image %>" alt=""></a></p>
+        <p class="article-url-info-img"><a href="<%= @article.url.site_url %>" target="_blank" rel="noopener noreferrer"><img src="<%= @article.url.site_image %>" alt=""></a></p>
       </div>
     </div>
     <div class="article-right">
