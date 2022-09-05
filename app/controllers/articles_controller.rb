@@ -2,15 +2,9 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.all
-    @urls = Url.all
-    @taggings = Tagging.joins(tag: :user).where(users: { admin: true })
-    logger.debug(@taggings)
-
-    @articles_1_6 = Article.limit(6)
-    @articles_7_12 = Article.limit(6).offset(6)
-    @articles_13_18 = Article.limit(6).offset(12)
-    @articles_19_24 = Article.limit(6).offset(18)
+    #.includes(:url)をつけることで@article.urlを実行した時にクエリが発行されなくなる
+    #tagging、tag、userも同様
+    @articles = Article.includes(:url, taggings:{tag: :user})
     
   end
 
@@ -84,11 +78,12 @@ class ArticlesController < ApplicationController
 
 
   def show
-    @article = Article.find(params[:id])
-    @url = Url.find(@article.url_id)
-    @taggings = Tagging.joins(tag: :user).where(users: { admin: true }, article_id: params[:id])
+    #.includes(:url)をつけることで@article.urlを実行した時にクエリが発行されなくなる
+    @article = Article.includes(:url, taggings:{tag: :user}).find(params[:id])
+    # @admintaggings = Tagging.joins(tag: :user).where(users: { admin: true }, article_id: params[:id])
     @comments = @article.comments.where(user_id: current_user.id) if user_signed_in?
     @comment = Comment.new
+    # binding.pry
   end
 
 
@@ -102,10 +97,8 @@ class ArticlesController < ApplicationController
   def search
     @search_word = params[:search]
 
-    @articles = Article.all
-    @urls = Url.all
-    @taggings = Tagging.joins(tag: :user).where(users: { admin: true })
-    
+    #index同様
+    @articles = Article.includes(:url, taggings:{tag: :user})
     @articles = @articles.joins(:url).where("site_title LIKE ? ", "%#{@search_word}%") if @search_word.present?
   end
 
