@@ -99,7 +99,13 @@ class ArticlesController < ApplicationController
 
     #index同様
     @articles = Article.includes(:url, taggings:{tag: :user})
-    @articles = @articles.where(taggings: {tag_id: @search_tags })
+    if @search_word.present? && @search_tags.present?
+      @articles = @articles.where(taggings: {tag_id: @search_tags }).where("urls.site_title LIKE ? ", "%#{@search_word}%").references(:url)
+    elsif @search_word.present?
+      @articles = @articles.where("urls.site_title LIKE ? ", "%#{@search_word}%").references(:url)
+    elsif @search_tags.present?
+      @articles = @articles.where(taggings: {tag_id: @search_tags })
+    end
   end
 
 
