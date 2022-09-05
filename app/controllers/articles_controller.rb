@@ -83,7 +83,6 @@ class ArticlesController < ApplicationController
     # @admintaggings = Tagging.joins(tag: :user).where(users: { admin: true }, article_id: params[:id])
     @comments = @article.comments.where(user_id: current_user.id) if user_signed_in?
     @comment = Comment.new
-    # binding.pry
   end
 
 
@@ -96,10 +95,11 @@ class ArticlesController < ApplicationController
 
   def search
     @search_word = params[:search]
+    @search_tags = params[:tag_ids]
 
     #index同様
     @articles = Article.includes(:url, taggings:{tag: :user})
-    @articles = @articles.joins(:url).where("site_title LIKE ? ", "%#{@search_word}%") if @search_word.present?
+    @articles = @articles.where(taggings: {tag_id: @search_tags })
   end
 
 

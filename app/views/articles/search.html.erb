@@ -4,6 +4,22 @@
     <div class="body-articles-search-searchfield">
       <%= form_tag({controller:"articles",action:"search"}, method: :get) do %>
         <%= text_field_tag :search, @search_word, class:"search-field" %>
+        <br>
+        <div class="select">
+          <% @admintags&.each do |t| %>
+            <div class="field-checkbox">
+              <input type="checkbox" id="search-field-checkbox-<%= t.id %>" name="tag_ids[]" value="<%= t.id %>" />
+              <label for="search-field-checkbox-<%= t.id %>"><%= t.name %></label>
+            </div>
+          <% end %>
+          <br>
+          <% @tags&.each do |t| %>
+            <div class="field-checkbox">
+              <input type="checkbox" id="search-field-checkbox-<%= t.id %>" name="tag_ids[]" value="<%= t.id %>" />
+              <label for="search-field-checkbox-<%= t.id %>"><%= t.name %></label>
+            </div>
+          <% end %>
+        </div>
         <%= submit_tag '検索する' %>
       <% end %>
     </div>
