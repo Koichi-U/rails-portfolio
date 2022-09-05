@@ -89,6 +89,7 @@ class ArticlesController < ApplicationController
     @taggings = Tagging.joins(tag: :user).where(users: { admin: true }, article_id: params[:id])
     @comments = @article.comments.where(user_id: current_user.id) if user_signed_in?
     @comment = Comment.new
+
   end
 
 
@@ -108,6 +109,9 @@ class ArticlesController < ApplicationController
     @taggings = Tagging.joins(tag: :user).where(users: { admin: true })
     
     # @articles = @articles.joins(:url).where("site_title LIKE ? ", "%#{@search_word}%") if @search_word.present?
+
+    @articles = Article.includes(:url, taggings:{tag: :user})
+    @articles = @articles.where(taggings: {tag_id: @search_tags })
   end
 
 
