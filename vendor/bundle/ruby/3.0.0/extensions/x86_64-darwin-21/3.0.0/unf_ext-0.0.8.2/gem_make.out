@@ -1,0 +1,16 @@
+current directory: /Users/koichiuchida/Desktop/rails-portfolio/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+/Users/koichiuchida/.rbenv/versions/3.0.3/bin/ruby -I /Users/koichiuchida/.rbenv/versions/3.0.3/lib/ruby/3.0.0 -r ./siteconf20230124-12329-gbekkj.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /Users/koichiuchida/Desktop/rails-portfolio/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make DESTDIR\= clean
+
+current directory: /Users/koichiuchida/Desktop/rails-portfolio/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make DESTDIR\=
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+current directory: /Users/koichiuchida/Desktop/rails-portfolio/vendor/bundle/ruby/3.0.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 unf_ext.bundle ./.gem.20230124-12329-bscue5
